@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.unisa.diem.ids.project;
+package it.unisa.diem.ids.project.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +21,9 @@ import javafx.stage.Stage;
  *
  * @author Gigi
  */
-public class FXMLCalculatorController implements Initializable {
+public class View implements Initializable {
+    
+    private String input = null;
     
     @FXML
     private AnchorPane mainPane;
@@ -52,4 +54,27 @@ public class FXMLCalculatorController implements Initializable {
         // TODO
     }    
     
+    public void displayTabView() {
+        
+    }
+    
+    public void displayOutputView() {
+        
+    }
+    
+    public void displayStackView() {
+        
+    }
+    
+    public void displayKeyboard() {
+        
+    }
+    
+    public void displayVariables() {
+        
+    }
+    
+    public void displayOperations() {
+        
+    }
 }
