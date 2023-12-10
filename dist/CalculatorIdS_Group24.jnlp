@@ -8,8 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="CalculatorIdS_Group24.jar" size="6135" download="eager" />
+    <jar href="CalculatorIdS_Group24.jar" size="5780" download="eager" />
   </resources>
-  <jfx:javafx-desc  width="800" height="600" main-class="calculatorids_group24.CalculatorIdS_Group24"  name="CalculatorIdS_Group24" />
+  <jfx:javafx-desc  width="800" height="600" main-class="it.unisa.diem.ids.project.Main"  name="CalculatorIdS_Group24" />
   <update check="always"/>
 </jnlp>

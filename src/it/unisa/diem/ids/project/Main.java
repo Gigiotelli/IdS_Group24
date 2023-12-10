@@ -20,7 +20,7 @@ import javafx.scene.paint.Color;
  *
  * @author Gigi
  */
-public class CalculatorIdS_Group24 extends Application {
+public class Main extends Application {
     
     private double xOffset = 0;
     private double yOffset = 0;

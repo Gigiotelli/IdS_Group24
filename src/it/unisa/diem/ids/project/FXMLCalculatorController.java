@@ -11,6 +11,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -42,7 +43,7 @@ public class FXMLCalculatorController implements Initializable {
     @FXML
     private void minimizeButtonAction(ActionEvent event) {
         Stage stage = (Stage)mainPane.getScene().getWindow();
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setIconified(true);   
     }
     

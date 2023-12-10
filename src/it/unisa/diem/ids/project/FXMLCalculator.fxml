@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="630.0" prefWidth="430.0" style="-fx-background-color: #404040; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculatorids_group24.FXMLCalculatorController">
+<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="630.0" prefWidth="430.0" style="-fx-background-color: #404040; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.ids.project.FXMLCalculatorController">
     <children>
       <AnchorPane layoutY="200.0" prefHeight="430.0" prefWidth="430.0" style="-fx-background-color: #f5faff; -fx-background-radius: 18;" />
       <Button fx:id="closeButton" alignment="CENTER" layoutX="364.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeButtonAction" style="-fx-background-color: ff5959; -fx-background-radius: 18;" text="×" textOverrun="CLIP" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
