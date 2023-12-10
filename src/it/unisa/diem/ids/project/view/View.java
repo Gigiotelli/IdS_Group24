@@ -8,11 +8,13 @@ package it.unisa.diem.ids.project.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -30,11 +32,16 @@ public class View implements Initializable {
     private Label label;
     private Button closeButton;
     private Button minimizeButton;
+    ChoiceBox choiceVar = new ChoiceBox<>(
+                FXCollections.observableArrayList(
+                        'a','b','c'
+                ));
+    
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private void diplayVarsAction(ActionEvent event) {
+        // TODO
+         
     }
     
     @FXML
@@ -52,6 +59,7 @@ public class View implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
     
     public void displayTabView() {

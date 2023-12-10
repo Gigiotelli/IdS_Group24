@@ -3,8 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/src/calculatorids_group24/FXMLCalculatorController.java</file>
-            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/src/calculatorids_group24/CalculatorIdS_Group24.java</file>
+            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/IdS_Group24/src/it/unisa/diem/ids/project/model/ComplexNumberOperation.java</file>
+            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/IdS_Group24/src/it/unisa/diem/ids/project/model/Model.java</file>
+            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/IdS_Group24/src/it/unisa/diem/ids/project/model/ModelVariables.java</file>
+            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/IdS_Group24/src/it/unisa/diem/ids/project/model/StackOperation.java</file>
+            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/IdS_Group24/src/it/unisa/diem/ids/project/view/View.java</file>
+            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/IdS_Group24/src/it/unisa/diem/ids/project/controller/CalculatorController.java</file>
+            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/IdS_Group24/src/it/unisa/diem/ids/project/Main.java</file>
+            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/IdS_Group24/src/it/unisa/diem/ids/project/model/VariableOperation.java</file>
+            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/IdS_Group24/src/it/unisa/diem/ids/project/view/FXMLCalculator.fxml</file>
+            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/IdS_Group24/src/it/unisa/diem/ids/project/model/ModelStack.java</file>
+            <file>file:/C:/Users/gigiu/Documents/NetBeansProjects/CalculatorIdS_Group24/IdS_Group24/src/it/unisa/diem/ids/project/model/ComplexNumber.java</file>
         </group>
     </open-files>
 </project-private>

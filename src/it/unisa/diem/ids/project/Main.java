@@ -5,6 +5,8 @@
  */
 package it.unisa.diem.ids.project;
 
+import it.unisa.diem.ids.project.view.*;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +29,7 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLCalculator.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/FXMLCalculator.fxml"));
         
         Scene scene = new Scene(root);
         
