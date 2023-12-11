@@ -29,7 +29,9 @@ public class ComplexNumber implements ComplexNumberOperation{
     // TO STRING
     @Override
     public String toString() {
-        return re + "+" + im + "j"; 
+        if(im!=0) 
+            return re + "+" + im + "j"; 
+        return re + ""; 
     }
     
     // GETTERS AND SETTERS
