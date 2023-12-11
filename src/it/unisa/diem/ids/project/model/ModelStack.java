@@ -47,15 +47,19 @@ public class ModelStack implements StackOperation {
     }
 
     @Override
-    public void drop() {  
+    public void drop() throws InsufficientElementException{  
         if (!stack.isEmpty())
             stack.pop();
+        else
+             throw new InsufficientElementException("Errore: numero elementi insufficiente");
     }
 
     @Override
-    public void dup() {  
+    public void dup() throws InsufficientElementException{  
         if (!stack.isEmpty())
             stack.push(stack.peek());  //il metodo peek guarda all'elemento in cima allo stack senza rimuoverlo
+        else
+             throw new InsufficientElementException("Errore: numero elementi insufficiente");
     }
 
     @Override
