@@ -10,12 +10,16 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -32,11 +36,12 @@ public class View implements Initializable {
     private Label label;
     private Button closeButton;
     private Button minimizeButton;
+    private Button btnC;
     ChoiceBox choiceVar = new ChoiceBox<>(
                 FXCollections.observableArrayList(
                         'a','b','c'
                 ));
-    
+    private TextField inputField;
     
     @FXML
     private void diplayVarsAction(ActionEvent event) {
@@ -56,6 +61,12 @@ public class View implements Initializable {
         stage.setIconified(true);   
     }
     
+    @FXML
+    private void btnCAction (ActionEvent event) {
+    
+       System.out.println("CLICCATO BTN C");
+    }
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
