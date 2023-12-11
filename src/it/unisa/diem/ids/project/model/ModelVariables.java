@@ -5,7 +5,11 @@
  */
 package it.unisa.diem.ids.project.model;
 
+
+
+import it.unisa.diem.ids.project.exceptions.VariableNotInitializedException;
 import java.util.Map;
+
 
 /**
  *
@@ -38,14 +42,24 @@ public class ModelVariables implements VariableOperation {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public ComplexNumber addVar(ComplexNumber c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  
+    public ComplexNumber addVar(ComplexNumber c, Character v) throws VariableNotInitializedException{
+        ComplexNumber x = variables.get(v);                 //prelevo il numero dalla mappa
+        if(x==null)                                          //controllo sull'inizializzazione della variabile
+                throw new VariableNotInitializedException();        
+        x = x.add(c);
+        variables.put(v, x);               
+        return x;
     }
 
-    @Override
-    public ComplexNumber subVar(ComplexNumber c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public ComplexNumber subVar(ComplexNumber c, Character v) throws VariableNotInitializedException {
+        ComplexNumber x = variables.get(v);                 //prelevo il numero dalla mappa
+        if(x==null)                                          //controllo sull'inizializzazione della variabile
+                throw new VariableNotInitializedException();        
+        x = x.sub(c);
+        variables.put(v, x);               
+        return x;
     }
     
 }
