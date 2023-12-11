@@ -29,7 +29,7 @@ public class ModelStack implements StackOperation {
     public String toString() {
         StringBuffer s = new StringBuffer("Stack:[");
         for (ComplexNumber c : stack) {
-            s.append(c.toString()+ "; ");
+            s.append(c.toString()).append("; ");
         }
         if (!stack.isEmpty()){ //rimuove il "; " finale da s se lo stack non è vuoto
             s.setLength(s.length() - 2);
