@@ -5,6 +5,7 @@
  */
 package it.unisa.diem.ids.project.model;
 
+import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
 import java.util.Stack;
 
 /**
@@ -58,21 +59,25 @@ public class ModelStack implements StackOperation {
     }
 
     @Override
-    public void swap() {
+    public void swap() throws InsufficientElementException{
         if (stack.size() >= 2){
             ComplexNumber lastElem = stack.pop();
             ComplexNumber secondLastElem = stack.pop();
             stack.push(lastElem);
             stack.push(secondLastElem);
         }
+        else
+            throw new InsufficientElementException("Errore: numero elementi insufficiente");
     }
 
     @Override
-    public void over() {  //inserisce una copia del penultimo elemento presente nello stack in cima allo stack
+    public void over() throws InsufficientElementException{  //inserisce una copia del penultimo elemento presente nello stack in cima allo stack
         if (stack.size() >= 2) {
             ComplexNumber secondLastElem = stack.get(stack.size() - 2);
             stack.push(secondLastElem);
         }
+        else
+            throw new InsufficientElementException("Errore: numero elementi insufficiente");
     }
     
 }
