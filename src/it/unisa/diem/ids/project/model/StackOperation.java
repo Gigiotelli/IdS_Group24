@@ -5,6 +5,8 @@
  */
 package it.unisa.diem.ids.project.model;
 
+import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
+
 /**
  *
  * @author Gigi
@@ -14,6 +16,6 @@ public interface StackOperation {
     public void clear();
     public void drop();
     public void dup();
-    public void swap();
-    public void over();
+    public void swap() throws InsufficientElementException;
+    public void over()throws InsufficientElementException;
 }
