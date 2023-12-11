@@ -14,8 +14,8 @@ import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
 public interface StackOperation {
     
     public void clear();
-    public void drop();
-    public void dup();
+    public void drop()throws InsufficientElementException;
+    public void dup()throws InsufficientElementException;
     public void swap() throws InsufficientElementException;
     public void over()throws InsufficientElementException;
 }
