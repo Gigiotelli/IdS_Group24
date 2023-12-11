@@ -29,7 +29,7 @@ public class ComplexNumber implements ComplexNumberOperation{
     // TO STRING
     @Override
     public String toString() {
-        return "ComplexNumber{" + "re=" + re + ", im=" + im + '}';
+        return re + "+" + im + "j"; 
     }
     
     // GETTERS AND SETTERS
@@ -78,7 +78,7 @@ public class ComplexNumber implements ComplexNumberOperation{
     }
 
     @Override
-    public ComplexNumber div(ComplexNumber c) {            //   a+bi/c+di=(ac+bd)/(c^2+d^2)+i⋅(bc−ad)/(c^2+d^2) formula divisione di numeri complessi, entrambi 
+    public ComplexNumber div(ComplexNumber c) {            //   a+bj/c+dj=(ac+bd)/(c^2+d^2)+j⋅(bc−ad)/(c^2+d^2) formula divisione di numeri complessi, entrambi 
       
         double den = c.re * c.re + c.im * c.im;   //denominatore
 
