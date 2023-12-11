@@ -17,7 +17,6 @@ public class ModelStack implements StackOperation {
     // COSTRUTTORE
     public ModelStack(){
         this.stack= new Stack();
-        
     }
     
     // GETTER STACK
@@ -34,28 +33,38 @@ public class ModelStack implements StackOperation {
     
     // METODI DELL'INTERFACCIA
     @Override
-    public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void clear() {  //richiama il metodo clear della classe Vector<E> estesa da Stack<E>
+        stack.clear();
     }
 
     @Override
-    public void drop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void drop() {  
+        if (!stack.isEmpty())
+            stack.pop();
     }
 
     @Override
-    public void dup() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void dup() {  
+        if (!stack.isEmpty())
+            stack.push(stack.peek());  //il metodo peek guarda all'elemento in cima allo stack senza rimuoverlo
     }
 
     @Override
     public void swap() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (stack.size() >= 2){
+            ComplexNumber lastElem = stack.pop();
+            ComplexNumber secondLastElem = stack.pop();
+            stack.push(lastElem);
+            stack.push(secondLastElem);
+        }
     }
 
     @Override
-    public void over() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void over() {  //inserisce una copia del penultimo elemento presente nello stack in cima allo stack
+        if (stack.size() >= 2) {
+            ComplexNumber secondLastElem = stack.get(stack.size() - 2);
+            stack.push(secondLastElem);
+        }
     }
     
 }
