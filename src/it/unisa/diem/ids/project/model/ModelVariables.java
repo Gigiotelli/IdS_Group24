@@ -8,6 +8,7 @@ package it.unisa.diem.ids.project.model;
 
 
 import it.unisa.diem.ids.project.exceptions.VariableNotInitializedException;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -16,47 +17,52 @@ import java.util.Map;
  * @author Gigi
  */
 public class ModelVariables implements VariableOperation {
-    private Map<Character, ComplexNumber> variables;
+    private final Map<Character, ComplexNumber> variables;
     
     // COSTRUTTORE
     public ModelVariables() {
-        
+        variables = new HashMap<>();
     }
     
     
     // TO STRING
     @Override
     public String toString() {
-        return "ModelVariables{" + "variables=" + variables + '}';
+        return variables.toString();                             //richiama il toString di HashMap, che utilizza quello di ComplexNumber iterativamente;
     }
     
     
     // METODI DELL'INTERFACCIA
     @Override
-    public ComplexNumber allocation(ComplexNumber c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void allocation(ComplexNumber c, Character v) {
+        variables.put(v, c);                                  //mette il valore nella variabile nella mappa, da usare in super;
     }
 
     @Override
-    public void pushVar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ComplexNumber pushVar(Character v) throws VariableNotInitializedException {
+        ComplexNumber c = variables.get(v);                //preleva numero dalla mappa e lo restituisce, da utilizzare nella super;
+        if(c==null)
+            throw new VariableNotInitializedException("Errore: variabile non inizializzata");
+        return c;
     }
 
   
+    @Override
     public ComplexNumber addVar(ComplexNumber c, Character v) throws VariableNotInitializedException{
         ComplexNumber x = variables.get(v);                 //prelevo il numero dalla mappa
         if(x==null)                                          //controllo sull'inizializzazione della variabile
-                throw new VariableNotInitializedException();        
+                throw new VariableNotInitializedException("Errore: variabile non inizializzata");        
         x = x.add(c);
         variables.put(v, x);               
         return x;
     }
 
     
+    @Override
     public ComplexNumber subVar(ComplexNumber c, Character v) throws VariableNotInitializedException {
         ComplexNumber x = variables.get(v);                 //prelevo il numero dalla mappa
         if(x==null)                                          //controllo sull'inizializzazione della variabile
-                throw new VariableNotInitializedException();        
+                throw new VariableNotInitializedException("Errore: variabile non inizializzata");        
         x = x.sub(c);
         variables.put(v, x);               
         return x;
