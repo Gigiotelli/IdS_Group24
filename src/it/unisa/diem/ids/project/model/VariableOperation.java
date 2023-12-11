@@ -5,17 +5,19 @@
  */
 package it.unisa.diem.ids.project.model;
 
+import it.unisa.diem.ids.project.exceptions.VariableNotInitializedException;
+
 /**
  *
  * @author Gigi
  */
 public interface VariableOperation {
     
-    public ComplexNumber allocation(ComplexNumber c);
+    public void allocation(ComplexNumber c, Character v);
     
-    public void pushVar();
+    public ComplexNumber pushVar(Character v) throws VariableNotInitializedException;
     
-    public ComplexNumber addVar(ComplexNumber c);
+    public ComplexNumber addVar(ComplexNumber c, Character v) throws VariableNotInitializedException;
     
-    public ComplexNumber subVar(ComplexNumber c);
+     public ComplexNumber subVar(ComplexNumber c, Character v) throws VariableNotInitializedException;
 }
