@@ -16,7 +16,8 @@ public class ModelStack implements StackOperation {
     
     // COSTRUTTORE
     public ModelStack(){
-        
+        this.stack= new Stack();
+        /**/
     }
     
     // GETTER STACK
