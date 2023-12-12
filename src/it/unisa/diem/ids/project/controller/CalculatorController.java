@@ -30,7 +30,10 @@ public class CalculatorController {
     
     
     
-    public void enter(String input){
+    public void enter(){
+        
+        String input= view.getInput();
+        
         if(input!=null && !input.isEmpty()){
             try{
                 performOperation(input);
