@@ -10,5 +10,16 @@ package it.unisa.diem.ids.project.controller;
  * @author Gigi
  */
 public class CalculatorController {
-    
+    private boolean isOperator(String input) {
+    switch (input) {
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+        case "+-":
+        case "sqrt":
+            return true;
+        default:
+            return false;
+    }
 }
