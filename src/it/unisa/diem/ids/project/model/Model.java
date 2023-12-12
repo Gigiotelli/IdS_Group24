@@ -13,54 +13,58 @@ import java.util.Stack;
  * @author Gigi
  */
 public class Model {
-    ModelVariables variables;
-    ModelStack stack;
-    ComplexNumber number;
+    private ModelVariables variables;
+    private ModelStack stack;
+    
     
     public Model(){
         this.variables= new ModelVariables();
         this.stack= new ModelStack();
     }
     
-    public ComplexNumber modelAdd(ComplexNumber c){ //farei 2 pop e toglierei il valore passato
+    public ComplexNumber modelAdd(){ 
         Stack s= stack.getStack();
-        number= (ComplexNumber)s.pop();
-        ComplexNumber sum= number.add(c);
+        ComplexNumber c1= (ComplexNumber)s.pop();
+        ComplexNumber c2= (ComplexNumber)s.pop();
+        ComplexNumber sum= c1.add(c2);
         return sum;
     }
     
-    public ComplexNumber modelSub(ComplexNumber c){
+    public ComplexNumber modelSub(){
         Stack s= stack.getStack();
-        number= (ComplexNumber)s.pop();
-        ComplexNumber sub= number.sub(c);
+        ComplexNumber c1= (ComplexNumber)s.pop();
+        ComplexNumber c2= (ComplexNumber)s.pop();
+        ComplexNumber sub= c1.sub(c2);
         return sub;
     }
     
-    public ComplexNumber modelMultiply(ComplexNumber c){
+    public ComplexNumber modelMultiply(){
         Stack s= stack.getStack();
-        number= (ComplexNumber)s.pop();
-        ComplexNumber prod= number.multiply(c);
+        ComplexNumber c1= (ComplexNumber)s.pop();
+        ComplexNumber c2= (ComplexNumber)s.pop();
+        ComplexNumber prod= c1.multiply(c2);
         return prod;
     }
     
-    public ComplexNumber modelDiv(ComplexNumber c){
+    public ComplexNumber modelDiv(){
         Stack s= stack.getStack();
-        number= (ComplexNumber)s.pop();
-        ComplexNumber div= number.div(c);
+        ComplexNumber c1= (ComplexNumber)s.pop();
+        ComplexNumber c2= (ComplexNumber)s.pop();
+        ComplexNumber div= c1.div(c2);
         return div;
     }
     
     public ComplexNumber modelSqrt(){ 
         Stack s= stack.getStack();
-        number= (ComplexNumber)s.pop();
-        ComplexNumber sqrt= number.sqrt();
+        ComplexNumber c= (ComplexNumber)s.pop();
+        ComplexNumber sqrt= c.sqrt();
         return sqrt;
     }
     
     public ComplexNumber modelReverseSign(){
         Stack s= stack.getStack();
-        number= (ComplexNumber)s.pop();
-        ComplexNumber reverseSign= number.reverseSign();
+        ComplexNumber c= (ComplexNumber)s.pop();
+        ComplexNumber reverseSign= c.reverseSign();
         return reverseSign;
     }
     
@@ -84,29 +88,29 @@ public class Model {
         stack.over();
     }
     
-    public void modelAllocation(Character v){ //volevo usare la pop per prelevare il ComplexNumber ma qui gielo passiamo già DIOPORCO
-        Stack s= stack.getStack();            //l'ho tolto afammocc
-        number=(ComplexNumber) s.pop();
-        variables.allocation(number, v);        
+    public void modelAllocation(Character v){ 
+        Stack s= stack.getStack();            
+        ComplexNumber c=(ComplexNumber) s.pop();
+        variables.allocation(c, v);        
     }
     
     public void modelPushVar(Character v) throws VariableNotInitializedException{
         Stack s= stack.getStack();
-        number= variables.pushVar(v);
-        s.push(number);
+        ComplexNumber c= variables.pushVar(v);
+        s.push(c);
     }
     
     public ComplexNumber modelAddVar(Character v) throws VariableNotInitializedException{
         Stack s= stack.getStack();
-        number=(ComplexNumber) s.pop();
-        ComplexNumber addVar= variables.addVar(number, v);
+        ComplexNumber c=(ComplexNumber) s.pop();
+        ComplexNumber addVar= variables.addVar(c, v);
         return addVar;
     }
     
     public ComplexNumber modelSubVar(Character v) throws VariableNotInitializedException{
         Stack s= stack.getStack();
-        number=(ComplexNumber) s.pop();
-        ComplexNumber subVar= variables.subVar(number, v);
+        ComplexNumber c=(ComplexNumber) s.pop();
+        ComplexNumber subVar= variables.subVar(c, v);
         return subVar;
     }
 }
