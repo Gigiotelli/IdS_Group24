@@ -93,13 +93,18 @@ public class ComplexNumber implements ComplexNumberOperation{
     @Override
     public ComplexNumber sqrt() {
         
+        if (re == 0 && im == 0) { //gestione della radice di 0 che potrebbe produrre come risultato NaN ?????????
+        // La radice quadrata di 0 è ancora 0
+        return new ComplexNumber(0, 0);
+        }   
+        
         int sign;
         if(im >= 0)
             sign = 1;
         else
             sign = -1;
         
-        double r = Math.sqrt(this.re * this.re + this.im * this.im);            //applicazione della formula di De Moivre
+        double r = Math.sqrt(this.re * this.re + this.im * this.im);  //applicazione della formula di De Moivre
         double newRe = Math.sqrt((r + this.re) / 2);
         double newIm = Math.sqrt((r - this.re) / 2) * sign;
         

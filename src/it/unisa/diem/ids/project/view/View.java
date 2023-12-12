@@ -44,7 +44,11 @@ import javafx.util.Duration;
  */
 public class View implements Initializable {
     
-    private String input = null;
+    private String input; //= null;
+    
+    public String getInput(){   
+        return input;    
+    }
     
     @FXML
     private AnchorPane mainPane;
