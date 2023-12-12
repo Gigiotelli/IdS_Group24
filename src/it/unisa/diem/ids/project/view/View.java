@@ -5,24 +5,37 @@
  */
 package it.unisa.diem.ids.project.view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
@@ -40,17 +53,30 @@ public class View implements Initializable {
     private Button minimizeButton;
     
     @FXML
+    private Button btnSelectVar;
+    
+    @FXML
+    private Pane varPane;
+    
+    @FXML
     private Button btnC;
     
     @FXML
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnDot, btnIm;
     private String buffer = new String();
     
-    @FXML
-    ChoiceBox choiceVar = new ChoiceBox<>(
-                FXCollections.observableArrayList(
-                        'a','b','c'
-                ));
+    ListView<Character> listVar = new ListView<>();
+    ObservableList<Character> viewVar =FXCollections.observableArrayList (
+            'a', 'b', 'c', 'd','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','w','z');
+     
+    ObservableList<String> comboItems = FXCollections.observableArrayList(
+            "Value 1",
+            "Value 2",
+            "Value 3"
+            );
+        ComboBox comboBox = new ComboBox(comboItems);
+    
+    
     @FXML
     private TextField inputField;
       
@@ -74,9 +100,20 @@ public class View implements Initializable {
     }
     
     @FXML
-    private void bottoneProvaAction(ActionEvent event) {
-        // TODO
-         
+    private void btnSelectVarAction(ActionEvent event) throws IOException {
+        
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLPickVar.fxml"));
+        
+        Scene scene = new Scene(root); 
+        Stage stage = new Stage();
+        
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setX(stage.getX()+200);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        
+        stage.setScene(scene);
+        stage.show();
     }
     
     @FXML
@@ -118,13 +155,17 @@ public class View implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // Autofocus sull'input field
         Platform.runLater(new Runnable() {
         @Override
         public void run() {
             inputField.requestFocus();
         }
-    });
+        });
+        
+        // Set default value per le variabili
+        
+
     }    
     
     public void displayTabView() {
