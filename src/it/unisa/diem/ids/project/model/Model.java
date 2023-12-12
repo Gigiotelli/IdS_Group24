@@ -22,6 +22,10 @@ public class Model {
         this.stack= new ModelStack();
     }
     
+    public ModelStack getModelStack(){
+        return stack;
+    }
+    
     public ComplexNumber modelAdd() throws InsufficientElementException{ 
         Stack<ComplexNumber> s= stack.getStack();
         if (s.size() >= 2){
