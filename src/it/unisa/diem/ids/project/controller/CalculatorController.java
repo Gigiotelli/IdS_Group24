@@ -5,7 +5,7 @@
  */
 package it.unisa.diem.ids.project.controller;
 
-import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
+import it.unisa.diem.ids.project.exceptions.*;
 import it.unisa.diem.ids.project.exceptions.SyntaxException;
 import it.unisa.diem.ids.project.model.ComplexNumber;
 import it.unisa.diem.ids.project.model.Model;
@@ -90,16 +90,16 @@ public class CalculatorController {
                 model.modelDrop();
                 break;
             case ">x":
-                model.modelAllocation(/*carattere selezionato nel menu a tendina ricevuto da qualche metodo di view (getVariable per es)*/);
+                //model.modelAllocation(/*carattere selezionato nel menu a tendina ricevuto da qualche metodo di view (getVariable per es)*/);
                 break;
             case "<x":
-                model.modelPushVar(/*come scritto sopra*/);
+                //model.modelPushVar(/*come scritto sopra*/);
                 break;
             case "+x":
-                model.modelAddVar(/**/);
+                //model.modelAddVar(/**/);
                 break;
             case "-x":
-                model.modelSubVar(/**/);
+                //model.modelSubVar(/**/);
                 break;
                 
             default:

@@ -20,6 +20,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,7 +34,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -52,7 +55,7 @@ public class View implements Initializable {
     
     @FXML
     private AnchorPane mainPane;
-    private Label label;
+    
     private Button closeButton;
     private Button minimizeButton;
     
@@ -72,17 +75,11 @@ public class View implements Initializable {
     ListView<Character> listVar = new ListView<>();
     ObservableList<Character> viewVar =FXCollections.observableArrayList (
             'a', 'b', 'c', 'd','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','w','z');
-     
-    ObservableList<String> comboItems = FXCollections.observableArrayList(
-            "Value 1",
-            "Value 2",
-            "Value 3"
-            );
-        ComboBox comboBox = new ComboBox(comboItems);
+      
     
     
     @FXML
-    private TextField inputField;
+    private Label inputLabel;
       
     
     @FXML
@@ -113,59 +110,62 @@ public class View implements Initializable {
         
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
-        stage.setX(stage.getX()+200);
+         
         stage.initModality(Modality.APPLICATION_MODAL);
+        
+        scene.setFill(Color.TRANSPARENT);
+        
+        
         
         stage.setScene(scene);
         stage.show();
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        double x = 670 + bounds.getMinX() + (bounds.getWidth() - scene.getWidth()) * 0.3;
+        double y = bounds.getMinY() + (bounds.getHeight() - scene.getHeight()) * 0.7 - 100;
+        stage.setX(x);
+        stage.setY(y);
+        
     }
     
     @FXML
     private void btnCAction (ActionEvent event) {
-        inputField.clear();
-        inputField.requestFocus();
+        inputLabel.setText("");
     } 
     
     @FXML
     private void numberButtonAction (ActionEvent event) {        
         Object source = event.getSource();
-        buffer = inputField.getText();
+        buffer = inputLabel.getText();
 	if(source==btn0)
-            inputField.setText(buffer+"0");
+            inputLabel.setText(buffer+"0");
 	if(source==btn1)
-            inputField.setText(buffer+"1");
+            inputLabel.setText(buffer+"1");
 	if(source==btn2)
-            inputField.setText(buffer+"2");
+            inputLabel.setText(buffer+"2");
 	if(source==btn3)
-            inputField.setText(buffer+"3");
+            inputLabel.setText(buffer+"3");
 	if(source==btn4)
-            inputField.setText(buffer+"4");
+            inputLabel.setText(buffer+"4");
 	if(source==btn5)
-            inputField.setText(buffer+"5");
+            inputLabel.setText(buffer+"5");
 	if(source==btn6)
-            inputField.setText(buffer+"6");
+            inputLabel.setText(buffer+"6");
 	if(source==btn7)
-            inputField.setText(buffer+"7");
+            inputLabel.setText(buffer+"7");
 	if(source==btn8)
-            inputField.setText(buffer+"8");
+            inputLabel.setText(buffer+"8");
 	if(source==btn9)
-            inputField.setText(buffer+"9");
+            inputLabel.setText(buffer+"9");
 	if(source==btnDot)
-            inputField.setText(buffer+".");
+            inputLabel.setText(buffer+".");
 	if(source==btnIm)
-            inputField.setText(buffer+"j");
+            inputLabel.setText(buffer+"j");
         
     }
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Autofocus sull'input field
-        Platform.runLater(new Runnable() {
-        @Override
-        public void run() {
-            inputField.requestFocus();
-        }
-        });
+        
         
         // Set default value per le variabili
         
