@@ -28,66 +28,66 @@ public class Model {
     
     public ComplexNumber modelAdd() throws InsufficientElementException{ 
         Stack<ComplexNumber> s= stack.getStack();
-        if (s.size() >= 2){
-            ComplexNumber c1= (ComplexNumber)s.pop();
-            ComplexNumber c2= (ComplexNumber)s.pop();
-            s.push(c1.add(c2));
-            return c1.add(c2);
+        if (s.size() < 2){
+            throw new InsufficientElementException("Errore: numero elementi insufficiente");
         }
-        throw new InsufficientElementException("Errore: numero elementi insufficiente");
+        ComplexNumber c1= (ComplexNumber)s.pop();
+        ComplexNumber c2= (ComplexNumber)s.pop();
+        s.push(c1.add(c2));
+        return c1.add(c2);
     }
     
     public ComplexNumber modelSub() throws InsufficientElementException{
         Stack<ComplexNumber> s= stack.getStack();
-        if (s.size() >= 2){
-            ComplexNumber c1= (ComplexNumber)s.pop();
-            ComplexNumber c2= (ComplexNumber)s.pop();
-            ComplexNumber sub= c1.sub(c2);
-            return sub;
+        if (s.size() < 2){
+            throw new InsufficientElementException("Errore: numero elementi insufficiente");
         }
-        throw new InsufficientElementException("Errore: numero elementi insufficiente");
+        ComplexNumber c1= (ComplexNumber)s.pop();
+        ComplexNumber c2= (ComplexNumber)s.pop();
+        s.push(c1.sub(c2));
+        return c1.sub(c2);
     }
     
     public ComplexNumber modelMultiply() throws InsufficientElementException{
         Stack<ComplexNumber> s= stack.getStack();
-        if (s.size() >= 2){
-            ComplexNumber c1= (ComplexNumber)s.pop();
-            ComplexNumber c2= (ComplexNumber)s.pop();
-            ComplexNumber prod= c1.multiply(c2);
-            return prod;
+        if (s.size() < 2){
+            throw new InsufficientElementException("Errore: numero elementi insufficiente");
         }
-        throw new InsufficientElementException("Errore: numero elementi insufficiente");
+        ComplexNumber c1= (ComplexNumber)s.pop();
+        ComplexNumber c2= (ComplexNumber)s.pop();
+        s.push(c1.multiply(c2));
+        return c1.multiply(c2);
     }
     
     public ComplexNumber modelDiv() throws InsufficientElementException{
         Stack<ComplexNumber> s= stack.getStack();
-        if (s.size() >= 2){
-            ComplexNumber c1= (ComplexNumber)s.pop();
-            ComplexNumber c2= (ComplexNumber)s.pop();
-            ComplexNumber div= c1.div(c2);
-            return div;
+        if (s.size() < 2){
+            throw new InsufficientElementException("Errore: numero elementi insufficiente");
         }
-        throw new InsufficientElementException("Errore: numero elementi insufficiente");
+        ComplexNumber c1= (ComplexNumber)s.pop();
+        ComplexNumber c2= (ComplexNumber)s.pop();
+        s.push(c1.div(c2));
+        return c1.div(c2);
     }
     
     public ComplexNumber modelSqrt() throws InsufficientElementException{ 
         Stack<ComplexNumber> s= stack.getStack();
-        if (!s.isEmpty()){
-            ComplexNumber c= (ComplexNumber)s.pop();
-            ComplexNumber sqrt= c.sqrt();
-            return sqrt;
+        if (s.isEmpty()){
+            throw new InsufficientElementException("Errore: numero elementi insufficiente");
         }
-        throw new InsufficientElementException("Errore: numero elementi insufficiente");
+        ComplexNumber c= (ComplexNumber)s.pop();
+        s.push(c.sqrt());
+        return c.sqrt();
     }
     
     public ComplexNumber modelReverseSign() throws InsufficientElementException{
         Stack<ComplexNumber> s= stack.getStack();
-        if (!s.isEmpty()){
-            ComplexNumber c= (ComplexNumber)s.pop();
-            ComplexNumber reverseSign= c.reverseSign();
-            return reverseSign;
+        if (s.isEmpty()){
+            throw new InsufficientElementException("Errore: numero elementi insufficiente");
         }
-        throw new InsufficientElementException("Errore: numero elementi insufficiente");
+        ComplexNumber c= (ComplexNumber)s.pop();
+        s.push(c.reverseSign());
+        return c.reverseSign();
     }
     
     public void modelClear(){
@@ -112,11 +112,12 @@ public class Model {
     
     public void modelAllocation(Character v) throws InsufficientElementException{ 
         Stack<ComplexNumber> s= stack.getStack(); 
-        if (!s.isEmpty()){
-            ComplexNumber c=(ComplexNumber) s.pop();
-            variables.allocation(c, v);
+        if (s.isEmpty()){
+            throw new InsufficientElementException("Errore: numero elementi insufficiente");
+            
         }
-        throw new InsufficientElementException("Errore: numero elementi insufficiente");
+        ComplexNumber c=(ComplexNumber) s.pop();
+        variables.allocation(c, v);
     }
     
     public void modelPushVar(Character v) throws VariableNotInitializedException{
@@ -127,21 +128,21 @@ public class Model {
     
     public ComplexNumber modelAddVar(Character v) throws VariableNotInitializedException, InsufficientElementException{
         Stack<ComplexNumber> s= stack.getStack();
-        if (!s.isEmpty()){
-            ComplexNumber c=(ComplexNumber) s.pop();
-            ComplexNumber addVar= variables.addVar(c, v);
-            return addVar;
+        if (s.isEmpty()){
+            throw new InsufficientElementException("Errore: numero elementi insufficiente");
         }
-        throw new InsufficientElementException("Errore: numero elementi insufficiente");
+        ComplexNumber c=(ComplexNumber) s.pop();
+        ComplexNumber addVar= variables.addVar(c, v);
+        return addVar;
     }
     
     public ComplexNumber modelSubVar(Character v) throws VariableNotInitializedException, InsufficientElementException{
         Stack<ComplexNumber> s= stack.getStack();
-        if (!s.isEmpty()){
-            ComplexNumber c=(ComplexNumber) s.pop();
-            ComplexNumber subVar= variables.subVar(c, v);
-            return subVar;
+        if (s.isEmpty()){
+            throw new InsufficientElementException("Errore: numero elementi insufficiente");
         }
-        throw new InsufficientElementException("Errore: numero elementi insufficiente");
+        ComplexNumber c=(ComplexNumber) s.pop();
+        ComplexNumber subVar= variables.subVar(c, v);
+        return subVar;
     }
 }
