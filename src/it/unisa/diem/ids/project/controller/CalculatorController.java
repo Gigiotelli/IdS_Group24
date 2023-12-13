@@ -250,9 +250,14 @@ public class CalculatorController implements Initializable {
         //model.getModelStack().getStack().push(c);
         model.getModelStack().getStack().push(c);
         outputLabel.setText(model.getModelStack().toString());
-        c = model.modelAdd();
         
+        try{
+            c= model.modelAdd();
+        }catch(InsufficientElementException e){
+            System.out.println("Error: Invalid number of elements in Stack");
+        }
         outputLabel.setText(model.getModelStack().toString());
+        
     }
     
     public void displayKeyboard() {
