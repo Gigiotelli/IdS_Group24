@@ -50,13 +50,12 @@ import javafx.util.Duration;
  * @author Gigi
  */
 public class CalculatorController implements Initializable {
-    // QUI SI ROMPE
+ 
     final private Model model;
-        
-        public CalculatorController(Model model) {
+        public CalculatorController() {
             this.model = new Model();    
         }
-        
+       
     private String input; //= null;
     int i;
     private String buffer = new String();
@@ -117,7 +116,7 @@ public class CalculatorController implements Initializable {
     
     
     @FXML
-    private ListView<String> stackList;
+    //private ListView<String> stackList = model.getModelStack().getStack().;
     
     
   
@@ -129,7 +128,9 @@ public class CalculatorController implements Initializable {
         return inputLabel.getText();    
     }
     
-    
+    public String clear() {
+        return "";
+    }
     ComplexNumber c = new ComplexNumber(4,6);
     
     
@@ -191,7 +192,8 @@ public class CalculatorController implements Initializable {
     
     @FXML
     private void btnCAction (ActionEvent event) {
-        inputLabel.setText("");
+        inputLabel.setText(clear());
+        outputLabel.setText(clear());
     } 
     
     @FXML
@@ -227,7 +229,8 @@ public class CalculatorController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        inputLabel.setText("");
+        outputLabel.setText("");
         
         // Set default value per le variabili
         
@@ -245,8 +248,7 @@ public class CalculatorController implements Initializable {
     public void displayStackView() {
         model.getModelStack().getStack().push(c);
         model.getModelStack().getStack();
-        
-        System.out.println(model.getModelStack().toString());
+        outputLabel.setText(model.getModelStack().toString());
     }
     
     public void displayKeyboard() {
