@@ -5,130 +5,293 @@
  */
 package it.unisa.diem.ids.project.controller;
 
-import it.unisa.diem.ids.project.exceptions.CalculatorException;
-import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
-import it.unisa.diem.ids.project.exceptions.SyntaxException;
-import it.unisa.diem.ids.project.exceptions.VariableException;
-import it.unisa.diem.ids.project.exceptions.VariableNotInitializedException;
-import it.unisa.diem.ids.project.model.ComplexNumber;
-import it.unisa.diem.ids.project.model.Model;
-import it.unisa.diem.ids.project.view.View;
+import it.unisa.diem.ids.project.view.*;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 /**
  *
  * @author Gigi
  */
-public class CalculatorController {
-    private Model model;
-    private View view;
-    private String input;
-
-    public CalculatorController(Model model, View view) {
-        this.model = model;
-        this.view = view;
+public class CalculatorController implements Initializable {
+    
+    private String input; //= null;
+    @FXML
+    private Button btnAss;
+    @FXML
+    private Button btnAssignVar;
+    @FXML
+    private Button btnPushVar;
+    @FXML
+    private Button btnAddVar;
+    @FXML
+    private Button btnSubVar;
+    @FXML
+    private Button btnC112;
+    @FXML
+    private Button btnAdd;
+    @FXML
+    private Button btnSub;
+    @FXML
+    private Button btnMul;
+    @FXML
+    private Button btnDiv;
+    @FXML
+    private Button btnSqrt;
+    @FXML
+    private Button btnRevSign;
+    @FXML
+    private Button btnSwap;
+    @FXML
+    private Button btnDup;
+    @FXML
+    private Button btnOver;
+    @FXML
+    private Button btnClear;
+    @FXML
+    private Button btnDrop;
+    @FXML
+    private Button btnBackSpace;
+    @FXML
+    private Label outputLabel;
+    
+    public String getInput(){   
+        return input;    
+    }
+    
+    @FXML
+    private AnchorPane mainPane;
+    
+    @FXML
+    private Button closeButton;
+    @FXML
+    private Button minimizeButton;
+    
+    @FXML
+    private Button btnSelectVar;
+    
+    
+    @FXML
+    private Button btnC;
+    
+    @FXML
+    private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnDot, btnIm;
+    private String buffer = new String();
+    
+    ListView<Character> listVar = new ListView<>();
+    ObservableList<Character> viewVar =FXCollections.observableArrayList (
+            'a', 'b', 'c', 'd','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','w','z');
+      
+    
+    
+    @FXML
+    private Label inputLabel;
+      
+    
+    
+    @FXML
+    private void closeButtonAction(ActionEvent event) {
+            Platform.exit();   
+    }
+    
+    @FXML
+    private void minimizeButtonAction(ActionEvent event) {
+        Stage stage = (Stage)mainPane.getScene().getWindow();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setIconified(true);   
+    }
+    
+    @FXML
+    private void btnSelectVarAction(ActionEvent event) throws IOException {
         
+        Parent root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ids/project/view/FXMLPickVar.fxml"));
+        
+        Scene scene = new Scene(root); 
+        Stage stage = new Stage();
+        
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
+         
+        stage.initModality(Modality.APPLICATION_MODAL);
+        
+        scene.setFill(Color.TRANSPARENT);
+        
+        
+        
+        stage.setScene(scene);
+        stage.show();
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        double x = 670 + bounds.getMinX() + (bounds.getWidth() - scene.getWidth()) * 0.3;
+        double y = bounds.getMinY() + (bounds.getHeight() - scene.getHeight()) * 0.7 - 100;
+        stage.setX(x);
+        stage.setY(y);
+        
+    }
+    
+    @FXML
+    private void btnCAction (ActionEvent event) {
+        inputLabel.setText("");
+    } 
+    
+    @FXML
+    private void numberButtonAction (ActionEvent event) {        
+        Object source = event.getSource();
+        buffer = inputLabel.getText();
+	if(source==btn0)
+            inputLabel.setText(buffer+"0");
+	if(source==btn1)
+            inputLabel.setText(buffer+"1");
+	if(source==btn2)
+            inputLabel.setText(buffer+"2");
+	if(source==btn3)
+            inputLabel.setText(buffer+"3");
+	if(source==btn4)
+            inputLabel.setText(buffer+"4");
+	if(source==btn5)
+            inputLabel.setText(buffer+"5");
+	if(source==btn6)
+            inputLabel.setText(buffer+"6");
+	if(source==btn7)
+            inputLabel.setText(buffer+"7");
+	if(source==btn8)
+            inputLabel.setText(buffer+"8");
+	if(source==btn9)
+            inputLabel.setText(buffer+"9");
+	if(source==btnDot)
+            inputLabel.setText(buffer+".");
+	if(source==btnIm)
+            inputLabel.setText(buffer+"j");
         
     }
    
-    
-    
-    
-    
-    public void enter(String input){
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
         
-        //string extraction
         
-        if(input!=null && !input.isEmpty()){
-            try{
-                performOperation(input);
-           }catch(InsufficientElementException e){
-               System.err.println("Error: Invalid number of elements in Stack");
-           }catch(VariableNotInitializedException e){
-               System.err.println("Error: Variable is not initialized");
-           }catch(VariableException e){
-               System.err.println("Error: Variable error");
-           }catch(SyntaxException e){
-               System.err.println("Error: Syntax error");
-           }catch(CalculatorException e){
-               System.err.println("Error: Application");
-           }catch(Exception e){
-               System.err.println("Error: Application");
-           }
-          
-       }
-   }
-   
-    private void performOperation(String input) throws InsufficientElementException, SyntaxException, VariableNotInitializedException, VariableException, CalculatorException {
-        switch (input) {
-            case "+":
-                model.modelAdd();
-                break;
-            case "-":
-                model.modelSub();
-                break;
-            case "*":
-                model.modelMultiply();
-                break;
-            case "/":
-                model.modelDiv();
-                break;
-            case "+-":
-                model.modelReverseSign();
-                break;
-            case "sqrt":
-                model.modelSqrt();
-                break;
-            case "swap":
-                model.modelSwap();
-                break;
-            case "dup":
-                model.modelDup();
-                break;
-            case "over":
-                model.modelOver();
-                break;
-            case "clear":
-                model.modelClear();
-                break;
-            case "drop":
-                model.modelDrop();
-                break;
-            case ">x":
-                //model.modelAllocation(/*carattere selezionato nel menu a tendina ricevuto da qualche metodo di view (getVariable per es)*/);
-                break;
-            case "<x":
-                //model.modelPushVar(/*come scritto sopra*/);
-                break;
-            case "+x":
-                //model.modelAddVar(/**/);
-                break;
-            case "-x":
-                //model.modelSubVar(/**/);
-                break;
-                
-            default:
-                if(isComplexNumber(input)){
-                    ComplexNumber num = parseComplexNumber(input);
-                    model.getModelStack().getStack().push(num);
-                }
-                    
+        // Set default value per le variabili
+        
+
+    }    
+    
+    public void displayTabView() {
+        
+    }
+    
+    public void displayOutputView() {
+        
+    }
+    
+    public void displayStackView() {
+        
+    }
+    
+    public void displayKeyboard() {
+        
+    }
+    
+    public void displayVariables() {
+        
+    }
+    
+    public void displayOperations() {
+        
     }
 
-        }
-    
-    private boolean isComplexNumber(String input) {
-        
-        return input.matches("-?\\d+(\\.\\d+)?\\s*[-+]\\s*\\d+(\\.\\d+)?j");
+    @FXML
+    private void btnAssignVarAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnPushVarAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnAddVarAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnSubVarAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnAddAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnSubAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnMulAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnDivAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnSqrtAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnRevSignAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnSwapAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnDupAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnOverAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnClearAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnDropAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnBackSpaceAction(ActionEvent event) {
+    }
 }
-    
-    
-    private ComplexNumber parseComplexNumber(String input) {
-        
-        String[] number = input.split("\\s*[-+]\\s*");
-        double re = Double.parseDouble(number[0]);
-        double im = Double.parseDouble(number[1].replace("j", ""));
-
-        return new ComplexNumber(re, im);
-    }
-    }
-    
