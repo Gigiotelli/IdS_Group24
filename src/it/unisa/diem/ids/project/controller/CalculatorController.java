@@ -5,8 +5,11 @@
  */
 package it.unisa.diem.ids.project.controller;
 
-import it.unisa.diem.ids.project.exceptions.*;
+import it.unisa.diem.ids.project.exceptions.CalculatorException;
+import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
 import it.unisa.diem.ids.project.exceptions.SyntaxException;
+import it.unisa.diem.ids.project.exceptions.VariableException;
+import it.unisa.diem.ids.project.exceptions.VariableNotInitializedException;
 import it.unisa.diem.ids.project.model.ComplexNumber;
 import it.unisa.diem.ids.project.model.Model;
 import it.unisa.diem.ids.project.view.View;
@@ -24,40 +27,38 @@ public class CalculatorController {
         this.model = model;
         this.view = view;
         
+        
     }
    
     
     
-    ////////
     
     
-    
-    
-    public void enter(){
+    public void enter(String input){
         
-        String input= view.getInput();
+        //string extraction
         
         if(input!=null && !input.isEmpty()){
             try{
                 performOperation(input);
            }catch(InsufficientElementException e){
-               
+               System.err.println("Error: Invalid number of elements in Stack");
            }catch(VariableNotInitializedException e){
-               
+               System.err.println("Error: Variable is not initialized");
            }catch(VariableException e){
-               
+               System.err.println("Error: Variable error");
            }catch(SyntaxException e){
-               
+               System.err.println("Error: Syntax error");
            }catch(CalculatorException e){
-               
+               System.err.println("Error: Application");
            }catch(Exception e){
-               
+               System.err.println("Error: Application");
            }
           
        }
    }
    
-    private void performOperation(String input) throws InsufficientElementException, SyntaxException, VariableNotInitializedException {
+    private void performOperation(String input) throws InsufficientElementException, SyntaxException, VariableNotInitializedException, VariableException, CalculatorException {
         switch (input) {
             case "+":
                 model.modelAdd();
@@ -124,10 +125,10 @@ public class CalculatorController {
     private ComplexNumber parseComplexNumber(String input) {
         
         String[] number = input.split("\\s*[-+]\\s*");
-        double realPart = Double.parseDouble(number[0]);
-        double imaginaryPart = Double.parseDouble(number[1].replace("j", ""));
+        double re = Double.parseDouble(number[0]);
+        double im = Double.parseDouble(number[1].replace("j", ""));
 
-        return new ComplexNumber(realPart, imaginaryPart);
+        return new ComplexNumber(re, im);
     }
     }
     
