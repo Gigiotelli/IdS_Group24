@@ -152,30 +152,28 @@ public class CalculatorController implements Initializable {
     }
     
     private ComplexNumber parseComplexNumber(String input) {
-    String[] number = input.split("\\s*[-+]\\s*");
+        String[] number = input.split("\\s*[-+]\\s*");
 
-    if (number.length > 0) {
-        double re = Double.parseDouble(number[0]);
-        double im = 0.0;
+        if (number.length > 0) {
+            double re = Double.parseDouble(number[0]);
+            double im = 0.0;
 
-        if (number.length > 1) {
-            String imaginaryPart = number[1].replace("j", "");
-            if (!imaginaryPart.isEmpty()) {
-                im = Double.parseDouble(imaginaryPart);
+            if (number.length > 1) {
+                String imaginaryPart = number[1].replace("j", "");
+                if (!imaginaryPart.isEmpty()) {
+                    im = Double.parseDouble(imaginaryPart);
+                }
             }
+            return new ComplexNumber(re, im);
         }
-
-        return new ComplexNumber(re, im);
+        return null; // Ritorno null in caso di stringa vuota o formato non valido
     }
-
-    return null; // Ritorno null in caso di stringa vuota o formato non valido
-}
 
     
     private boolean isComplexNumber(String input) {
         
         return (input.matches("-?\\d+(\\.\\d+)?\\s*[-+]\\s*\\d+(\\.\\d+)?j") || (Integer.parseInt(input) >=-9 && Integer.parseInt(input) <=9));
-}
+    }
     
     
     
