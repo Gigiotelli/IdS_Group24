@@ -7,6 +7,9 @@ package it.unisa.diem.ids.project.model;
 
 import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
 import java.util.Stack;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
 
 /**
  *
@@ -29,6 +32,15 @@ public class ModelStack implements StackOperation {
     @Override
     public String toString() {
         return stack.toString();
+    }
+    
+    public ObservableList<String> toStringList() {
+        ObservableList<String> list = FXCollections.observableArrayList();
+        
+        for(int i=0;i<stack.size();i++)
+            list.add(stack.get(i).toString());
+        
+        return list;
     }
     
     

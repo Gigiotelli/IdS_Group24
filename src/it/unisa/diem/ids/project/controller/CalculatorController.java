@@ -5,6 +5,7 @@
  */
 package it.unisa.diem.ids.project.controller;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
 import it.unisa.diem.ids.project.model.ComplexNumber;
 import it.unisa.diem.ids.project.model.Model;
@@ -29,7 +30,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Cell;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -40,6 +45,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -117,7 +123,9 @@ public class CalculatorController implements Initializable {
     
     
     @FXML
-    //private ListView<String> stackList = model.getModelStack().getStack().;
+    private ListView<String> stackList; 
+    
+            
     
     
   
@@ -129,12 +137,19 @@ public class CalculatorController implements Initializable {
         return inputLabel.getText();    
     }
     
+    public void setInput(String string){   
+        inputLabel.setText(string);    
+    }
+    
     public String clear() {
         return "";
     }
     ComplexNumber c = new ComplexNumber(4,6);
     
-    
+    public void showException(String e) {
+        Alert alert = new Alert(AlertType.ERROR, e, ButtonType.OK);
+        alert.showAndWait();
+    }
     
     
     
@@ -175,7 +190,7 @@ public class CalculatorController implements Initializable {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
          
-        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initModality(Modality.WINDOW_MODAL);
         
         scene.setFill(Color.TRANSPARENT);
         
@@ -184,7 +199,7 @@ public class CalculatorController implements Initializable {
         stage.setScene(scene);
         stage.show();
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-        double x = 670 + bounds.getMinX() + (bounds.getWidth() - scene.getWidth()) * 0.3;
+        double x = 695 + bounds.getMinX() + (bounds.getWidth() - scene.getWidth()) * 0.3;
         double y = bounds.getMinY() + (bounds.getHeight() - scene.getHeight()) * 0.7 - 100;
         stage.setX(x);
         stage.setY(y);
@@ -193,7 +208,7 @@ public class CalculatorController implements Initializable {
     
     @FXML
     private void btnCAction (ActionEvent event) {
-        inputLabel.setText(clear());
+        setInput(clear());
         outputLabel.setText(clear());
     } 
     
@@ -230,8 +245,10 @@ public class CalculatorController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        inputLabel.setText("");
+        setInput(clear());
         outputLabel.setText("");
+        
+        stackList.setItems(model.getModelStack().toStringList());
         
         // Set default value per le variabili
         
@@ -247,17 +264,19 @@ public class CalculatorController implements Initializable {
     }
     
     public void displayStackView() throws InsufficientElementException {
-        //model.getModelStack().getStack().push(c);
+        model.getModelStack().getStack().push(c);
         model.getModelStack().getStack().push(c);
         outputLabel.setText(model.getModelStack().toString());
         
         try{
             c= model.modelAdd();
         }catch(InsufficientElementException e){
-            System.err.println("Error: Invalid number of elements in Stack");
+            showException("Error: Invalid number of elements in Stack");
         }
         outputLabel.setText(model.getModelStack().toString());
         
+        stackList.setItems(model.getModelStack().toStringList());
+
     }
     
     public void displayKeyboard() {
@@ -321,18 +340,25 @@ public class CalculatorController implements Initializable {
     private void btnOperationAction(ActionEvent event) {
         Object source = event.getSource();
         buffer = getInput();
-	if(source==btnAdd)
-            inputLabel.setText(buffer+"+");
+	if(source==btnAdd) {
+            if(buffer == "" || buffer == null || buffer.contains("+") || buffer.contains("-"))
+                setInput("+");
+            else
+                setInput(buffer+"+");
+        }
         if(source==btnSub)
-            inputLabel.setText(buffer+"-");
+            if(buffer == "" || buffer == null || buffer.contains("+") || buffer.contains("-"))
+                setInput("-");
+            else
+                setInput(buffer+"-");
         if(source==btnMul)
-            inputLabel.setText(buffer+"×");
+            setInput("×");
         if(source==btnDiv)
-            inputLabel.setText(buffer+"÷");
+            setInput("÷");
         if(source==btnSqrt)
-            inputLabel.setText(buffer+"√");
+            setInput("√");
         if(source==btnRevSign)
-            inputLabel.setText(buffer+"±");
+            setInput("±");
     }
 
     @FXML
