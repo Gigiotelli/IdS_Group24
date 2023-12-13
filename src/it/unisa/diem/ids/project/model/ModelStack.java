@@ -28,7 +28,7 @@ public class ModelStack implements StackOperation {
     // TO STRING
     @Override
     public String toString() {
-        StringBuffer s = new StringBuffer("Stack:[");
+        /*StringBuffer s = new StringBuffer("Stack:[");
         for (ComplexNumber c : stack) {
             s.append(c.toString()).append("; ");
         }
@@ -36,7 +36,9 @@ public class ModelStack implements StackOperation {
             s.setLength(s.length() - 2);
         }
         s.append("]");
-        return s.toString();
+        return s.toString();*/
+        return stack.toString();
+        
     }
     
     
