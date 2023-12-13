@@ -125,9 +125,13 @@ public class CalculatorControllerOLD {
         
         String[] number = input.split("\\s*[-+]\\s*");
         double re = Double.parseDouble(number[0]);
-        double im = Double.parseDouble(number[1].replace("j", ""));
-
-        return new ComplexNumber(re, im);
+        double im;
+        
+        if(number[1] != null){
+            im = Double.parseDouble(number[1].replace("j", ""));
+            return new ComplexNumber(re, im);
+        }
+        return new ComplexNumber(re);
     }
-    }
+}
     

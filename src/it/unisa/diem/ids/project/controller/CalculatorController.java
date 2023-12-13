@@ -151,9 +151,23 @@ public class CalculatorController implements Initializable {
         alert.showAndWait();
     }
     
+    private ComplexNumber parseComplexNumber(String input) {
+        
+        String[] number = input.split("\\s*[-+]\\s*");
+        double re = Double.parseDouble(number[0]);
+        double im;
+        
+        if(number[1] != null){
+            im = Double.parseDouble(number[1].replace("j", ""));
+            return new ComplexNumber(re, im);
+        }
+        return new ComplexNumber(re);
+    }
     
-    
-    
+    private boolean isComplexNumber(String input) {
+        
+        return (input.matches("-?\\d+(\\.\\d+)?\\s*[-+]\\s*\\d+(\\.\\d+)?j") || (Integer.parseInt(input) >=-9 && Integer.parseInt(input) <=9));
+}
     
     
     
@@ -332,25 +346,18 @@ public class CalculatorController implements Initializable {
     private void btnBackSpaceAction(ActionEvent event) {
         buffer = getInput();
         if(buffer.length() != 0)
-            inputLabel.setText(buffer.substring(0, buffer.length() - 1));
-        else inputLabel.setText("");
+            setInput(buffer.substring(0, buffer.length() - 1));
+        else setInput("");
     }
 
     @FXML
     private void btnOperationAction(ActionEvent event) {
         Object source = event.getSource();
         buffer = getInput();
-	if(source==btnAdd) {
-            if(buffer == "" || buffer == null || buffer.contains("+") || buffer.contains("-"))
-                setInput("+");
-            else
-                setInput(buffer+"+");
-        }
+	if(source==btnAdd)
+            setInput(buffer+"+");
         if(source==btnSub)
-            if(buffer == "" || buffer == null || buffer.contains("+") || buffer.contains("-"))
-                setInput("-");
-            else
-                setInput(buffer+"-");
+            setInput(buffer+"-");
         if(source==btnMul)
             setInput("×");
         if(source==btnDiv)
@@ -362,7 +369,33 @@ public class CalculatorController implements Initializable {
     }
 
     @FXML
-    private void btnEnterAction(ActionEvent event) throws InsufficientElementException{
-        displayStackView();
+    private void btnEnterAction(ActionEvent event) throws InsufficientElementException {
+        switch (getInput()) {
+            case "+":
+                model.modelAdd();
+                break;
+            case "-":
+                model.modelSub();
+                break;
+            case "×":
+                model.modelMultiply();
+                break;
+            case "÷":
+                model.modelDiv();
+                break;
+            case "±":
+                model.modelReverseSign();
+                break;
+            case "√":
+                model.modelSqrt();
+                break;
+            default:
+                if(isComplexNumber(getInput())){
+                    ComplexNumber num = parseComplexNumber(getInput());
+                    model.getModelStack().getStack().push(num);
+                    stackList.setItems(model.getModelStack().toStringList());
+                }
+        }
     }
+    
 }
