@@ -5,6 +5,7 @@
  */
 package it.unisa.diem.ids.project.controller;
 
+import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
 import it.unisa.diem.ids.project.model.ComplexNumber;
 import it.unisa.diem.ids.project.model.Model;
 import it.unisa.diem.ids.project.view.*;
@@ -245,9 +246,12 @@ public class CalculatorController implements Initializable {
         
     }
     
-    public void displayStackView() {
+    public void displayStackView() throws InsufficientElementException {
+        //model.getModelStack().getStack().push(c);
         model.getModelStack().getStack().push(c);
-        model.getModelStack().getStack();
+        outputLabel.setText(model.getModelStack().toString());
+        c = model.modelAdd();
+        
         outputLabel.setText(model.getModelStack().toString());
     }
     
@@ -327,7 +331,7 @@ public class CalculatorController implements Initializable {
     }
 
     @FXML
-    private void btnEnterAction(ActionEvent event) {
+    private void btnEnterAction(ActionEvent event) throws InsufficientElementException{
         displayStackView();
     }
 }

@@ -31,8 +31,8 @@ public class Model {
         if (s.size() >= 2){
             ComplexNumber c1= (ComplexNumber)s.pop();
             ComplexNumber c2= (ComplexNumber)s.pop();
-            ComplexNumber sum= c1.add(c2);
-            return sum;
+            s.push(c1.add(c2));
+            return c1.add(c2);
         }
         throw new InsufficientElementException("Errore: numero elementi insufficiente");
     }
