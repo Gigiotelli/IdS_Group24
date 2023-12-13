@@ -5,6 +5,8 @@
  */
 package it.unisa.diem.ids.project.controller;
 
+import it.unisa.diem.ids.project.model.ComplexNumber;
+import it.unisa.diem.ids.project.model.Model;
 import it.unisa.diem.ids.project.view.*;
 
 import java.io.IOException;
@@ -48,9 +50,32 @@ import javafx.util.Duration;
  * @author Gigi
  */
 public class CalculatorController implements Initializable {
-    
+    // QUI SI ROMPE
+    /*final private Model model;
+        
+        public CalculatorController(Model model) {
+            this.model = new Model();    
+        }*/
+        
     private String input; //= null;
     int i;
+    private String buffer = new String();
+    
+    //  -----   Inizio Dichiarazione elementi interfaccia
+    @FXML
+    private AnchorPane mainPane;
+    @FXML
+    private Label inputLabel;
+    @FXML
+    private Button closeButton;
+    @FXML
+    private Button minimizeButton;
+    @FXML
+    private Button btnSelectVar;
+    @FXML
+    private Button btnC;
+    @FXML
+    private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnDot, btnIm;
     @FXML
     private Button btnAss;
     @FXML
@@ -61,8 +86,6 @@ public class CalculatorController implements Initializable {
     private Button btnAddVar;
     @FXML
     private Button btnSubVar;
-    @FXML
-    private Button btnC112;
     @FXML
     private Button btnAdd;
     @FXML
@@ -88,32 +111,35 @@ public class CalculatorController implements Initializable {
     @FXML
     private Button btnBackSpace;
     @FXML
-    private Label outputLabel;
+    private Label outputLabel;   
     @FXML
-    private ListView<?> stackList;
+    private Button btnEnter;
     
+    
+    @FXML
+    private ListView<String> stackList;
+    
+    
+  
+    //  -----   Fine Dichiarazione elementi interfaccia
+    
+    
+    // metodo per ottenere la stringa inserita in input
     public String getInput(){   
-        return input;    
+        return inputLabel.getText();    
     }
     
-    @FXML
-    private AnchorPane mainPane;
     
-    @FXML
-    private Button closeButton;
-    @FXML
-    private Button minimizeButton;
-    
-    @FXML
-    private Button btnSelectVar;
+    ComplexNumber c = new ComplexNumber(4,6);
     
     
-    @FXML
-    private Button btnC;
     
-    @FXML
-    private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnDot, btnIm;
-    private String buffer = new String();
+    
+    
+    
+    
+    
+    
     
     ListView<Character> listVar = new ListView<>();
     ObservableList<Character> viewVar =FXCollections.observableArrayList (
@@ -121,8 +147,6 @@ public class CalculatorController implements Initializable {
       
     
     
-    @FXML
-    private Label inputLabel;
       
     
     
@@ -173,7 +197,7 @@ public class CalculatorController implements Initializable {
     @FXML
     private void numberButtonAction (ActionEvent event) {        
         Object source = event.getSource();
-        buffer = inputLabel.getText();
+        buffer = getInput();
 	if(source==btn0)
             inputLabel.setText(buffer+"0");
 	if(source==btn1)
@@ -219,7 +243,10 @@ public class CalculatorController implements Initializable {
     }
     
     public void displayStackView() {
+        /*model.getModelStack().getStack().push(c);
+        model.getModelStack().getStack();
         
+        System.out.println(model.getModelStack().toString());*/
     }
     
     public void displayKeyboard() {
@@ -273,7 +300,7 @@ public class CalculatorController implements Initializable {
 
     @FXML
     private void btnBackSpaceAction(ActionEvent event) {
-        buffer = inputLabel.getText();
+        buffer = getInput();
         if(buffer.length() != 0)
             inputLabel.setText(buffer.substring(0, buffer.length() - 1));
         else inputLabel.setText("");
@@ -282,7 +309,7 @@ public class CalculatorController implements Initializable {
     @FXML
     private void btnOperationAction(ActionEvent event) {
         Object source = event.getSource();
-        buffer = inputLabel.getText();
+        buffer = getInput();
 	if(source==btnAdd)
             inputLabel.setText(buffer+"+");
         if(source==btnSub)
@@ -295,5 +322,10 @@ public class CalculatorController implements Initializable {
             inputLabel.setText(buffer+"√");
         if(source==btnRevSign)
             inputLabel.setText(buffer+"±");
+    }
+
+    @FXML
+    private void btnEnterAction(ActionEvent event) {
+        displayStackView();
     }
 }

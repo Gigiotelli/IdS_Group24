@@ -176,7 +176,7 @@
                         <Blend />
                      </effect>
                   </Button>
-                  <Button fx:id="btnC112" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #66ff7f; -fx-background-radius: 18;" text="enter" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                  <Button fx:id="btnEnter" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnEnterAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #66ff7f; -fx-background-radius: 18;" text="enter" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.rowIndex="5">
                      <font>
                         <Font name="Calibri Bold" size="14.0" />
                      </font>
