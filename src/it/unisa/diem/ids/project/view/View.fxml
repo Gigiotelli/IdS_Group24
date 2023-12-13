@@ -184,7 +184,7 @@
                         <Blend />
                      </effect>
                   </Button>
-                  <Button fx:id="btnAdd" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="+" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                  <Button fx:id="btnAdd" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnOperationAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="+" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.rowIndex="4">
                      <font>
                         <Font name="Calibri" size="24.0" />
                      </font>
@@ -192,7 +192,7 @@
                         <Blend />
                      </effect>
                   </Button>
-                  <Button fx:id="btnSub" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnSubAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="-" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <Button fx:id="btnSub" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnOperationAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="-" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.rowIndex="3">
                      <font>
                         <Font name="Calibri" size="24.0" />
                      </font>
@@ -200,7 +200,7 @@
                         <Blend />
                      </effect>
                   </Button>
-                  <Button fx:id="btnMul" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnMulAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="×" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <Button fx:id="btnMul" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnOperationAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="×" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <font>
                         <Font name="Calibri" size="24.0" />
                      </font>
@@ -208,7 +208,7 @@
                         <Blend />
                      </effect>
                   </Button>
-                  <Button fx:id="btnDiv" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnDivAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="÷" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <Button fx:id="btnDiv" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnOperationAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="÷" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <font>
                         <Font name="Calibri" size="24.0" />
                      </font>
@@ -216,7 +216,7 @@
                         <Blend />
                      </effect>
                   </Button>
-                  <Button fx:id="btnSqrt" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnSqrtAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="√" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button fx:id="btnSqrt" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnOperationAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="√" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font name="Calibri" size="24.0" />
                      </font>
@@ -224,7 +224,7 @@
                         <Blend />
                      </effect>
                   </Button>
-                  <Button fx:id="btnRevSign" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnRevSignAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="±" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="btnRevSign" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnOperationAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: f3b8f7; -fx-background-radius: 18;" text="±" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Calibri" size="24.0" />
                      </font>

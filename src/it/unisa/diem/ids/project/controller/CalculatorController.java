@@ -50,6 +50,7 @@ import javafx.util.Duration;
 public class CalculatorController implements Initializable {
     
     private String input; //= null;
+    int i;
     @FXML
     private Button btnAss;
     @FXML
@@ -88,6 +89,8 @@ public class CalculatorController implements Initializable {
     private Button btnBackSpace;
     @FXML
     private Label outputLabel;
+    @FXML
+    private ListView<?> stackList;
     
     public String getInput(){   
         return input;    
@@ -247,29 +250,6 @@ public class CalculatorController implements Initializable {
     private void btnSubVarAction(ActionEvent event) {
     }
 
-    @FXML
-    private void btnAddAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnSubAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnMulAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnDivAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnSqrtAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnRevSignAction(ActionEvent event) {
-    }
 
     @FXML
     private void btnSwapAction(ActionEvent event) {
@@ -293,5 +273,27 @@ public class CalculatorController implements Initializable {
 
     @FXML
     private void btnBackSpaceAction(ActionEvent event) {
+        buffer = inputLabel.getText();
+        if(buffer.length() != 0)
+            inputLabel.setText(buffer.substring(0, buffer.length() - 1));
+        else inputLabel.setText("");
+    }
+
+    @FXML
+    private void btnOperationAction(ActionEvent event) {
+        Object source = event.getSource();
+        buffer = inputLabel.getText();
+	if(source==btnAdd)
+            inputLabel.setText(buffer+"+");
+        if(source==btnSub)
+            inputLabel.setText(buffer+"-");
+        if(source==btnMul)
+            inputLabel.setText(buffer+"×");
+        if(source==btnDiv)
+            inputLabel.setText(buffer+"÷");
+        if(source==btnSqrt)
+            inputLabel.setText(buffer+"√");
+        if(source==btnRevSign)
+            inputLabel.setText(buffer+"±");
     }
 }
