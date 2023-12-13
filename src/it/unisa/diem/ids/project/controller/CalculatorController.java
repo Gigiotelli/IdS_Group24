@@ -254,7 +254,7 @@ public class CalculatorController implements Initializable {
         try{
             c= model.modelAdd();
         }catch(InsufficientElementException e){
-            System.out.println("Error: Invalid number of elements in Stack");
+            System.err.println("Error: Invalid number of elements in Stack");
         }
         outputLabel.setText(model.getModelStack().toString());
         
