@@ -20,12 +20,6 @@ public class ComplexNumber implements ComplexNumberOperation{
         this.im=im;
     }
     
-    // COSTRUTTORE di un numero reale
-    public ComplexNumber(double re){
-        this.re=re;
-        this.im=0.0;
-    }
-    
     // TO STRING
     @Override
     public String toString() {
