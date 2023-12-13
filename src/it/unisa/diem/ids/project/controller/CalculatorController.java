@@ -379,21 +379,27 @@ public class CalculatorController implements Initializable {
         switch (getInput()) {
             case "+":
                 model.modelAdd();
+                stackList.setItems(model.getModelStack().toStringList());
                 break;
             case "-":
                 model.modelSub();
+                stackList.setItems(model.getModelStack().toStringList());
                 break;
             case "×":
                 model.modelMultiply();
+                stackList.setItems(model.getModelStack().toStringList());
                 break;
             case "÷":
                 model.modelDiv();
+                stackList.setItems(model.getModelStack().toStringList());
                 break;
             case "±":
                 model.modelReverseSign();
+                stackList.setItems(model.getModelStack().toStringList());
                 break;
             case "√":
                 model.modelSqrt();
+                stackList.setItems(model.getModelStack().toStringList());
                 break;
             default:
                 if(isComplexNumber(getInput())){
