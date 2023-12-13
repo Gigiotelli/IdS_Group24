@@ -65,16 +65,16 @@ public class CalculatorControllerOLD {
             case "-":
                 model.modelSub();
                 break;
-            case "*":
+            case "×":
                 model.modelMultiply();
                 break;
-            case "/":
+            case "÷":
                 model.modelDiv();
                 break;
-            case "+-":
+            case "±":
                 model.modelReverseSign();
                 break;
-            case "sqrt":
+            case "√":
                 model.modelSqrt();
                 break;
             case "swap":
