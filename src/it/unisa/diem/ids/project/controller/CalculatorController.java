@@ -284,7 +284,7 @@ public class CalculatorController implements Initializable {
     }
     
     public void displayStackView() throws InsufficientElementException {
-        model.getModelStack().getStack().push(c);
+        /*model.getModelStack().getStack().push(c);
         model.getModelStack().getStack().push(c);
         outputLabel.setText(model.getModelStack().toString());
         
@@ -295,7 +295,7 @@ public class CalculatorController implements Initializable {
         }
         outputLabel.setText(model.getModelStack().toString());
         
-        stackList.setItems(model.getModelStack().toStringList());
+        stackList.setItems(model.getModelStack().toStringList());*/
 
     }
     
