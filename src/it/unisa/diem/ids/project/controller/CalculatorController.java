@@ -51,11 +51,11 @@ import javafx.util.Duration;
  */
 public class CalculatorController implements Initializable {
     // QUI SI ROMPE
-    /*final private Model model;
+    final private Model model;
         
         public CalculatorController(Model model) {
             this.model = new Model();    
-        }*/
+        }
         
     private String input; //= null;
     int i;
@@ -243,10 +243,10 @@ public class CalculatorController implements Initializable {
     }
     
     public void displayStackView() {
-        /*model.getModelStack().getStack().push(c);
+        model.getModelStack().getStack().push(c);
         model.getModelStack().getStack();
         
-        System.out.println(model.getModelStack().toString());*/
+        System.out.println(model.getModelStack().toString());
     }
     
     public void displayKeyboard() {
