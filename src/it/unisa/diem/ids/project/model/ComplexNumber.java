@@ -5,6 +5,8 @@
  */
 package it.unisa.diem.ids.project.model;
 
+import java.util.Locale;
+
 /**
  *
  * @author Gigi
@@ -77,21 +79,23 @@ public class ComplexNumber implements ComplexNumberOperation{
     public ComplexNumber div(ComplexNumber c) {            //   a+bj/c+dj=(ac+bd)/(c^2+d^2)+j⋅(bc−ad)/(c^2+d^2) formula divisione di numeri complessi, entrambi 
       
         double den = c.re * c.re + c.im * c.im;   //denominatore
-
+        
+         if (den == 0) {
+            throw new ArithmeticException("Division by zero is not allowed");
+        }
+        
         double newRe = (this.re * c.re + this.im * c.im) / den;
         double newIm = (this.im * c.re - this.re * c.im) / den;
 
-        return new ComplexNumber(newRe, newIm);
+        String formattedRe = String.format(Locale.US, "%.2f", newRe);
+        String formattedIm = String.format(Locale.US, "%.2f", newIm);
+
+        return new ComplexNumber(Double.parseDouble(formattedRe), Double.parseDouble(formattedIm));
     }
 
     @Override
     public ComplexNumber sqrt() {
-        
-        if (re == 0 && im == 0) { //gestione della radice di 0 che potrebbe produrre come risultato NaN ?????????
-        // La radice quadrata di 0 è ancora 0
-        return new ComplexNumber(0, 0);
-        }   
-        
+     
         int sign;
         if(im >= 0)
             sign = 1;
@@ -102,9 +106,10 @@ public class ComplexNumber implements ComplexNumberOperation{
         double newRe = Math.sqrt((r + this.re) / 2);
         double newIm = Math.sqrt((r - this.re) / 2) * sign;
         
-        
-        return new ComplexNumber(newRe, newIm);
-        
+        String formattedRe = String.format(Locale.US, "%.2f", newRe);
+        String formattedIm = String.format(Locale.US, "%.2f", newIm);
+
+        return new ComplexNumber(Double.parseDouble(formattedRe), Double.parseDouble(formattedIm));
     }
 
     @Override

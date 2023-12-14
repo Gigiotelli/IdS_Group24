@@ -55,7 +55,7 @@ public class ModelStack implements StackOperation {
         if (!stack.isEmpty())
             stack.pop();
         else
-             throw new InsufficientElementException("Errore: numero elementi insufficiente");
+             throw new InsufficientElementException("Invalid number of elements in Stack");
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ModelStack implements StackOperation {
         if (!stack.isEmpty())
             stack.push(stack.peek());  //il metodo peek guarda all'elemento in cima allo stack senza rimuoverlo
         else
-             throw new InsufficientElementException("Errore: numero elementi insufficiente");
+             throw new InsufficientElementException("Invalid number of elements in Stack");
     }
 
     @Override
@@ -75,7 +75,7 @@ public class ModelStack implements StackOperation {
             stack.push(secondLastElem);
         }
         else
-            throw new InsufficientElementException("Errore: numero elementi insufficiente");
+            throw new InsufficientElementException("Invalid number of elements in Stack");
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ModelStack implements StackOperation {
             stack.push(secondLastElem);
         }
         else
-            throw new InsufficientElementException("Errore: numero elementi insufficiente");
+            throw new InsufficientElementException("Invalid number of elements in Stack");
     }
     
 }
