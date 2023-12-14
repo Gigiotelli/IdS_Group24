@@ -15,6 +15,7 @@ import it.unisa.diem.ids.project.view.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -191,9 +192,10 @@ public class CalculatorController implements Initializable {
                     immaginary = input.startsWith("-") ? -1.0 : 1.0;
                 } 
         
-        re = real;
-        im = immaginary;
-        return new ComplexNumber(re, im);
+        String formattedRe = String.format(Locale.US, "%.3f", real);
+        String formattedIm = String.format(Locale.US, "%.3f", immaginary);
+
+        return new ComplexNumber(Double.parseDouble(formattedRe), Double.parseDouble(formattedIm));
     }
     
     
