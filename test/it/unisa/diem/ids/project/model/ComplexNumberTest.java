@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  */
 public class ComplexNumberTest {
     
-    private double delta= 0.01;
+    private double delta= 0.001;
     
     public ComplexNumberTest() {
     }
