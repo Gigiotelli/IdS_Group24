@@ -45,6 +45,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -68,6 +69,7 @@ public class CalculatorController implements Initializable {
     private String input; //= null;
     int i;
     private String buffer = new String();
+    private Character selectedVar = 'x';
     
     //  -----   Inizio Dichiarazione elementi interfaccia
     @FXML
@@ -127,7 +129,8 @@ public class CalculatorController implements Initializable {
     @FXML
     private ListView<String> stackList; 
     
-            
+    private int iVar = 0;
+    private GridPane varGrid;        
     
     
   
@@ -227,7 +230,6 @@ public class CalculatorController implements Initializable {
     
     @FXML
     private void btnSelectVarAction(ActionEvent event) throws IOException {
-        
         Parent root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ids/project/view/FXMLPickVar.fxml"));
         
         Scene scene = new Scene(root); 
@@ -240,9 +242,22 @@ public class CalculatorController implements Initializable {
         
         scene.setFill(Color.TRANSPARENT);
         
-        
+        /*while(iVar<3){
+            iVar++;
+            final Button temp = new Button("Button " + iVar);
+            final int numButton= iVar;
+            temp.setId("" + iVar);
+            temp.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent e) {
+                System.out.println("id(" + temp.getId()  + ") =  " + numButton);
+                }
+            });
+            varGrid.add(temp, iVar, 1);
+        }*/
         
         stage.setScene(scene);
+        
         stage.show();
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
         double x = 695 + bounds.getMinX() + (bounds.getWidth() - scene.getWidth()) * 0.3;
@@ -459,5 +474,6 @@ public class CalculatorController implements Initializable {
         }
         setInput(clear());
     }
+ 
     
 }

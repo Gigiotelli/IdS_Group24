@@ -22,6 +22,8 @@ public class ModelVariables implements VariableOperation {
     // COSTRUTTORE
     public ModelVariables() {
         variables = new HashMap<>();
+        for(Character ch = 'a'; ch <= 'z'; ++ch)
+            variables.put(ch, null);
     }
     
     
