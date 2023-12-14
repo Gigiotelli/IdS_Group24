@@ -332,6 +332,7 @@ public class CalculatorController implements Initializable {
         if(input.matches("[a-z]")){
             try {
                 model.modelAllocation(input.charAt(0));
+                displayStackView();
                 //model.getModelStack().getStack().lastElement()
             } catch (InsufficientElementException ex) {
                 showException("Error: " + ex.getMessage());
@@ -353,7 +354,7 @@ public class CalculatorController implements Initializable {
         if(input.matches("[a-z]")){
             try {
                 model.modelPushVar(input.charAt(0));
-                
+                displayStackView();
             } catch (VariableNotInitializedException ex) {
                 showException("Error: " + ex.getMessage());
             }
@@ -373,7 +374,8 @@ public class CalculatorController implements Initializable {
         String input = getInput();
         if(input.matches("[a-z]")){
             try {
-                model.modelAddVar(input.charAt(0));
+                displayOutputView(model.modelAddVar(input.charAt(0)));
+                displayStackView();
             } catch (InsufficientElementException ex) {
                 showException("Error: " + ex.getMessage());
             } catch (VariableNotInitializedException ex){
@@ -393,7 +395,8 @@ public class CalculatorController implements Initializable {
         String input = getInput();
         if(input.matches("[a-z]")){
             try {
-                model.modelSubVar(input.charAt(0));
+                displayOutputView(model.modelSubVar(input.charAt(0)));
+                displayStackView();
             } catch (InsufficientElementException ex) {
                 showException("Error: " + ex.getMessage());
             } catch (VariableNotInitializedException ex){
