@@ -5,6 +5,7 @@
  */
 package it.unisa.diem.ids.project;
 
+import it.unisa.diem.ids.project.controller.CalculatorController;
 import it.unisa.diem.ids.project.view.*;
 
 import javafx.application.Application;
@@ -27,9 +28,16 @@ public class Main extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
     
+    CalculatorController calController;
+    
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("view/View.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/View.fxml"));
+
+        Parent root = loader.load();
+        
+        // inizializzo il controller per poter successivamente passare le variabili
+        CalculatorController controller1 = loader.getController();
         
         Scene scene = new Scene(root);
         

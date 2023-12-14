@@ -5,7 +5,7 @@
  */
 package it.unisa.diem.ids.project.controller;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
+import it.unisa.diem.ids.project.view.FXMLPickVarController;
 import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
 import it.unisa.diem.ids.project.exceptions.SyntaxException;
 import it.unisa.diem.ids.project.exceptions.VariableNotInitializedException;
@@ -64,6 +64,8 @@ import javafx.util.Duration;
 public class CalculatorController implements Initializable {
  
     final private Model model;
+    @FXML
+    private AnchorPane buttonPane;
         public CalculatorController() {
             this.model = new Model();    
         }
@@ -71,7 +73,7 @@ public class CalculatorController implements Initializable {
     private String input; //= null;
     int i;
     private String buffer = new String();
-    private Character selectedVar = 'x';
+    private String selectedVar;
     
     //  -----   Inizio Dichiarazione elementi interfaccia
     @FXML
@@ -135,8 +137,6 @@ public class CalculatorController implements Initializable {
     private GridPane varGrid;        
     
     
-  
-    //  -----   Fine Dichiarazione elementi interfaccia
     
     
     // metodo per ottenere la stringa inserita in input
@@ -206,18 +206,6 @@ public class CalculatorController implements Initializable {
         return (input.matches("[+-]?\\d*\\.?\\d+([eE][+-]?\\d+)?[+-]?\\d*\\.?\\d*[jJ]?"));
     }
     
-    
-    
-    
-    ListView<Character> listVar = new ListView<>();
-    ObservableList<Character> viewVar =FXCollections.observableArrayList (
-            'a', 'b', 'c', 'd','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','w','z');
-      
-    
-    
-      
-    
-    
     @FXML
     private void closeButtonAction(ActionEvent event) {
             Platform.exit();   
@@ -230,35 +218,27 @@ public class CalculatorController implements Initializable {
         stage.setIconified(true);   
     }
     
+        
+        FXMLPickVarController controller2;
+    
     @FXML
     private void btnSelectVarAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/it/unisa/diem/ids/project/view/FXMLPickVar.fxml"));
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/it/unisa/diem/ids/project/view/FXMLPickVar.fxml"));
+        Parent root2 = loader2.load();
+        FXMLPickVarController pickVar = loader2.getController();        
         
-        Scene scene = new Scene(root); 
+        Scene scene = new Scene(root2); 
         Stage stage = new Stage();
         
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
-         
         stage.initModality(Modality.WINDOW_MODAL);
-        
         scene.setFill(Color.TRANSPARENT);
         
-        /*while(iVar<3){
-            iVar++;
-            final Button temp = new Button("Button " + iVar);
-            final int numButton= iVar;
-            temp.setId("" + iVar);
-            temp.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent e) {
-                System.out.println("id(" + temp.getId()  + ") =  " + numButton);
-                }
-            });
-            varGrid.add(temp, iVar, 1);
-        }*/
-        
         stage.setScene(scene);
+        
+        // inizializzo il controller che passo a 
+        pickVar.initController1(this);
         
         stage.show();
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
@@ -574,6 +554,11 @@ public class CalculatorController implements Initializable {
                 setInput(clear());
             }
         }
+    }
+    
+    public void insertVar(String var) {
+        setInput(clear());
+        setInput(var);
     }
     
 }
