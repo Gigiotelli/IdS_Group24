@@ -107,8 +107,8 @@ public class CalculatorControllerOLD {
                 
             default:
                 if(isComplexNumber(input)){
-                    ComplexNumber num = parseComplexNumber(input);
-                    model.getModelStack().getStack().push(num);
+                    //ComplexNumber num = parseComplexNumber(input);
+                    //model.getModelStack().getStack().push(num);
                 }
                     
     }
@@ -121,7 +121,7 @@ public class CalculatorControllerOLD {
 }
     
     
-    private ComplexNumber parseComplexNumber(String input) {
+    /*private ComplexNumber parseComplexNumber(String input) {
         
         String[] number = input.split("\\s*[-+]\\s*");
         double re = Double.parseDouble(number[0]);
@@ -132,6 +132,6 @@ public class CalculatorControllerOLD {
             return new ComplexNumber(re, im);
         }
         return new ComplexNumber(re);
-    }
+    }*/
 }
     

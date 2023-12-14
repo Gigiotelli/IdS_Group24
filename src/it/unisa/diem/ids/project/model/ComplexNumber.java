@@ -24,7 +24,7 @@ public class ComplexNumber implements ComplexNumberOperation{
     @Override
     public String toString() {
         if(im!=0) 
-            return re + "+" + im + "j"; 
+            return re + (im>0 ? "+":"") + im + "j"; 
         return re + ""; 
     }
     

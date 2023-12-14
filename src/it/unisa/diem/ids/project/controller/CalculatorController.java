@@ -16,6 +16,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
@@ -152,27 +154,51 @@ public class CalculatorController implements Initializable {
     }
     
     private ComplexNumber parseComplexNumber(String input) {
-        String[] number = input.split("\\s*[-+]\\s*");
-
-        if (number.length > 0) {
-            double re = Double.parseDouble(number[0]);
-            double im = 0.0;
-
-            if (number.length > 1) {
-                String imaginaryPart = number[1].replace("j", "");
-                if (!imaginaryPart.isEmpty()) {
-                    im = Double.parseDouble(imaginaryPart);
-                }
+        String doubleRegex = "[-+]?(\\d+(\\.\\d*)?|\\.\\d+)";
+        Pattern doublePattern = Pattern.compile(doubleRegex);
+        
+        double re, im;
+        double real = 0.0;
+        double immaginary = 0.0;
+        
+        Matcher m = doublePattern.matcher(input);
+        if (m.lookingAt()) {
+            real = Double.parseDouble(m.group());
+            input = input.substring(m.end());
+            m = doublePattern.matcher(input);
+            System.out.println("INPUT: "+input);
+            if(input.equals("j")) {
+                immaginary = real;
+                real = 0.0;
             }
-            return new ComplexNumber(re, im);
-        }
-        return null; // Ritorno null in caso di stringa vuota o formato non valido
+            
+            if (input.matches("[-+].*") && m.lookingAt()) {
+                immaginary = Double.parseDouble(m.group());
+                input = input.substring(m.end());
+                if (!input.equals("j")) {
+                    System.out.println("Eccez.");
+                    throw new NumberFormatException();
+                }
+            } else if (input.matches("[-+]j")) {
+                immaginary = input.startsWith("-") ? -1.0 : 1.0;
+            }
+                    else {
+                        //throw new NumberFormatException();
+                    }
+                } else if (input.matches("[-+]j")) {
+                    immaginary = input.startsWith("-") ? -1.0 : 1.0;
+                } 
+        
+        re = real;
+        im = immaginary;
+        System.out.println("RE: "+re+"\tIM: "+im);
+        return new ComplexNumber(re, im);
     }
-
+    
     
     private boolean isComplexNumber(String input) {
         
-        return (input.matches("-?\\d+(\\.\\d+)?\\s*[-+]\\s*\\d+(\\.\\d+)?j") || (Integer.parseInt(input) >=-9 && Integer.parseInt(input) <=9));
+        return (input.matches("[+-]?\\d*\\.?\\d+([eE][+-]?\\d+)?[+-]?\\d*\\.?\\d*[jJ]?"));
     }
     
     
@@ -330,22 +356,45 @@ public class CalculatorController implements Initializable {
 
     @FXML
     private void btnSwapAction(ActionEvent event) {
+        // MANCANO I CONTROLLI E LE ECCEZIONI
+        ComplexNumber c1 = model.getModelStack().getStack().pop();
+        ComplexNumber c2 = model.getModelStack().getStack().pop();
+        model.getModelStack().getStack().push(c1);
+        model.getModelStack().getStack().push(c2);
+        stackList.setItems(model.getModelStack().toStringList());
     }
 
     @FXML
     private void btnDupAction(ActionEvent event) {
+        // MANCANO I CONTROLLI E LE ECCEZIONI
+        ComplexNumber c1 = model.getModelStack().getStack().pop();
+        model.getModelStack().getStack().push(c1);
+        model.getModelStack().getStack().push(c1);
+        stackList.setItems(model.getModelStack().toStringList());
     }
 
     @FXML
     private void btnOverAction(ActionEvent event) {
+        // MANCANO I CONTROLLI E LE ECCEZIONI
+        ComplexNumber c1 = model.getModelStack().getStack().pop();
+        ComplexNumber c2 = model.getModelStack().getStack().pop();
+        model.getModelStack().getStack().push(c2);
+        model.getModelStack().getStack().push(c1);
+        model.getModelStack().getStack().push(c2);
+        stackList.setItems(model.getModelStack().toStringList());
     }
 
     @FXML
     private void btnClearAction(ActionEvent event) {
+        model.getModelStack().getStack().clear();
+        stackList.setItems(model.getModelStack().toStringList());
     }
 
     @FXML
     private void btnDropAction(ActionEvent event) {
+        // MANCANO I CONTROLLI E LE ECCEZIONI
+        model.getModelStack().getStack().pop();
+        stackList.setItems(model.getModelStack().toStringList());
     }
 
     @FXML
@@ -408,6 +457,7 @@ public class CalculatorController implements Initializable {
                     stackList.setItems(model.getModelStack().toStringList());
                 }
         }
+        setInput(clear());
     }
     
 }

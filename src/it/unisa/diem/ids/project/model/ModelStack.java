@@ -38,8 +38,8 @@ public class ModelStack implements StackOperation {
         ObservableList<String> list = FXCollections.observableArrayList();
         
         for(int i=0;i<stack.size();i++)
-            list.add(stack.get(i).toString());
-        
+            list.add(stack.get(i).toString()); 
+                 
         return list;
     }
     
