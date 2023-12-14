@@ -31,8 +31,8 @@ public class Model {
         if (s.size() < 2){
             throw new InsufficientElementException("Invalid number of elements in Stack");
         }
-        ComplexNumber c1= (ComplexNumber)s.pop();
-        ComplexNumber c2= (ComplexNumber)s.pop();
+        ComplexNumber c1= s.pop();
+        ComplexNumber c2= s.pop();
         s.push(c1.add(c2));
         return c1.add(c2);
     }
@@ -42,8 +42,8 @@ public class Model {
         if (s.size() < 2){
             throw new InsufficientElementException("Invalid number of elements in Stack");
         }
-        ComplexNumber c1= (ComplexNumber)s.pop();
-        ComplexNumber c2= (ComplexNumber)s.pop();
+        ComplexNumber c1= s.pop();
+        ComplexNumber c2= s.pop();
         s.push(c1.sub(c2));
         return c1.sub(c2);
     }
@@ -53,8 +53,8 @@ public class Model {
         if (s.size() < 2){
             throw new InsufficientElementException("Invalid number of elements in Stack");
         }
-        ComplexNumber c1= (ComplexNumber)s.pop();
-        ComplexNumber c2= (ComplexNumber)s.pop();
+        ComplexNumber c1= s.pop();
+        ComplexNumber c2= s.pop();
         s.push(c1.multiply(c2));
         return c1.multiply(c2);
     }
@@ -64,8 +64,8 @@ public class Model {
         if (s.size() < 2){
             throw new InsufficientElementException("Invalid number of elements in Stack");
         }
-        ComplexNumber c1= (ComplexNumber)s.pop();
-        ComplexNumber c2= (ComplexNumber)s.pop();
+        ComplexNumber c1= s.pop();
+        ComplexNumber c2= s.pop();
         s.push(c1.div(c2));
         return c1.div(c2);
     }
@@ -75,7 +75,7 @@ public class Model {
         if (s.isEmpty()){
             throw new InsufficientElementException("Invalid number of elements in Stack");
         }
-        ComplexNumber c= (ComplexNumber)s.pop();
+        ComplexNumber c= s.pop();
         s.push(c.sqrt());
         return c.sqrt();
     }
@@ -85,7 +85,7 @@ public class Model {
         if (s.isEmpty()){
             throw new InsufficientElementException("Invalid number of elements in Stack");
         }
-        ComplexNumber c= (ComplexNumber)s.pop();
+        ComplexNumber c= s.pop();
         s.push(c.reverseSign());
         return c.reverseSign();
     }
@@ -116,7 +116,7 @@ public class Model {
             throw new InsufficientElementException("Invalid number of elements in Stack");
             
         }
-        ComplexNumber c=(ComplexNumber) s.pop();
+        ComplexNumber c= s.pop();
         variables.allocation(c, v);
     }
     
@@ -131,7 +131,7 @@ public class Model {
         if (s.isEmpty()){
             throw new InsufficientElementException("Invalid number of elements in Stack");
         }
-        ComplexNumber c=(ComplexNumber) s.pop();
+        ComplexNumber c= s.pop();
         ComplexNumber addVar= variables.addVar(c, v);
         return addVar;
     }
@@ -141,7 +141,7 @@ public class Model {
         if (s.isEmpty()){
             throw new InsufficientElementException("Invalid number of elements in Stack");
         }
-        ComplexNumber c=(ComplexNumber) s.pop();
+        ComplexNumber c= s.pop();
         ComplexNumber subVar= variables.subVar(c, v);
         return subVar;
     }
