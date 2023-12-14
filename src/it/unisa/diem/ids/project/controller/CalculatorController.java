@@ -344,7 +344,7 @@ public class CalculatorController implements Initializable {
     }
 
 
-////////////RIGHE CHE STA MODIFICANDO ANDREA DONT TOUCH SI SFANCULA GIT!!!
+//Funzioni sulle variabili 
     @FXML
     private void btnAssignVarAction(ActionEvent event) {
         
@@ -389,14 +389,47 @@ public class CalculatorController implements Initializable {
 
     @FXML
     private void btnAddVarAction(ActionEvent event) {
+        
+        String input = getInput();
+        if(input.matches("[a-z]")){
+            try {
+                model.modelAddVar(input.charAt(0));
+            } catch (InsufficientElementException ex) {
+                showException("Error: " + ex.getMessage());
+            } catch (VariableNotInitializedException ex){
+                showException("Error: " + ex.getMessage());
+            }
+        }else
+            try {
+                throw new SyntaxException("String not valid as a variable");
+        } catch (SyntaxException ex) {
+            showException("Error : " + ex.getMessage());
+        }
     }
 
     @FXML
     private void btnSubVarAction(ActionEvent event) {
+        
+        String input = getInput();
+        if(input.matches("[a-z]")){
+            try {
+                model.modelSubVar(input.charAt(0));
+            } catch (InsufficientElementException ex) {
+                showException("Error: " + ex.getMessage());
+            } catch (VariableNotInitializedException ex){
+                showException("Error: " + ex.getMessage());
+            }
+        }else
+            try {
+                throw new SyntaxException("String not valid as a variable");
+        } catch (SyntaxException ex) {
+            showException("Error : " + ex.getMessage());
+        }
+        
     }
 
     
- /////////////////////////////////////////////////LEGGI SOPRA!!!
+ //
     
     
     @FXML
