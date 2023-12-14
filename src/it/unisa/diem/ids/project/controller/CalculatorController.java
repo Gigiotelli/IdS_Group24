@@ -342,6 +342,8 @@ public class CalculatorController implements Initializable {
         //Insieme dei bottoni che permettono visualizzazione delle operazioni eseguibili sulla calcolatrice
     }
 
+
+////////////RIGHE CHE STA MODIFICANDO ANDREA DONT TOUCH SI SFANCULA GIT!!!
     @FXML
     private void btnAssignVarAction(ActionEvent event) {
     }
@@ -358,7 +360,10 @@ public class CalculatorController implements Initializable {
     private void btnSubVarAction(ActionEvent event) {
     }
 
-
+    
+ /////////////////////////////////////////////////LEGGI SOPRA!!!
+    
+    
     @FXML
     private void btnSwapAction(ActionEvent event) throws InsufficientElementException {
         try{
