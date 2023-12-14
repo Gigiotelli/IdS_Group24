@@ -373,8 +373,7 @@ public class CalculatorController implements Initializable {
             model.getModelStack().getStack().push(c2);*/
             model.modelSwap();
             displayStackView();
-        }
-        catch(InsufficientElementException e){
+        }catch(InsufficientElementException e){
             showException("Error: " + e.getMessage());
         }
     }
@@ -387,8 +386,7 @@ public class CalculatorController implements Initializable {
             model.getModelStack().getStack().push(c1);*/
             model.modelDup();
             displayStackView();
-        }
-        catch(InsufficientElementException e){
+        }catch(InsufficientElementException e){
             showException("Error: " + e.getMessage());
         }
     }
@@ -403,8 +401,7 @@ public class CalculatorController implements Initializable {
             model.getModelStack().getStack().push(c2);*/
             model.modelOver();
             displayStackView();
-        }
-        catch(InsufficientElementException e){
+        }catch(InsufficientElementException e){
             showException("Error: " + e.getMessage());
         }
     }
@@ -459,29 +456,52 @@ public class CalculatorController implements Initializable {
             try {
                 switch (getInput()) {
                     case "+":
-                        model.modelAdd();
-                        //stackList.setItems(model.getModelStack().toStringList());
-                        displayStackView();
+                        try{
+                            model.modelAdd();
+                            displayStackView();
+                        }catch(InsufficientElementException e){
+                            showException("Error: " + e.getMessage());
+                        }
                         break;
                     case "-":
-                        model.modelSub();
-                        displayStackView();
+                        try{
+                            model.modelSub();
+                            displayStackView();
+                        }catch(InsufficientElementException e){
+                            showException("Error: " + e.getMessage());
+                        }
                         break;
                     case "×":
-                        model.modelMultiply();
-                        displayStackView();
+                        try{
+                            model.modelMultiply();
+                            displayStackView();
+                        }catch(InsufficientElementException e){
+                            showException("Error: " + e.getMessage());
+                        }
                         break;
                     case "÷":
-                        model.modelDiv();
-                        displayStackView();
+                        try{
+                            model.modelDiv();
+                            displayStackView();
+                        }catch(InsufficientElementException e){
+                            showException("Error: " + e.getMessage());
+                        }
                         break;
                     case "±":
-                        model.modelReverseSign();
-                        displayStackView();
+                        try{
+                            model.modelReverseSign();
+                            displayStackView();
+                        }catch(InsufficientElementException e){
+                            showException("Error: " + e.getMessage());
+                        }
                         break;
                     case "√":
-                        model.modelSqrt();
-                        displayStackView();
+                        try{
+                            model.modelSqrt();
+                            displayStackView();
+                        }catch(InsufficientElementException e){
+                            showException("Error: " + e.getMessage());
+                        }
                         break;
                     default:
                         if (isComplexNumber(getInput())) {
