@@ -41,15 +41,49 @@ public class ComplexNumberTest {
     /**
      * Test of toString method, of class ComplexNumber.
      */
-    @Test
-    public void testToString() {
+    @Test // Test Case 1: toString di un numero complesso con parte reale e immaginaria positiva
+    public void testToString1() {
         System.out.println("toString");
-        ComplexNumber instance = null;
-        String expResult = "";
+        ComplexNumber instance = new ComplexNumber(2.5, 3.8);
+        String expResult = "2.5+3.8j";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+
+    @Test // Test Case 2: toString di un numero complesso con parte reale e immaginaria negativa
+    public void testToString2() {
+        System.out.println("toString");
+        ComplexNumber instance = new ComplexNumber(-1.2, -4.7);
+        String expResult = "-1.2-4.7j";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+    }
+
+    @Test // Test Case 3: toString di un numero complesso con solo parte reale
+    public void testToString3() {
+        System.out.println("toString");
+        ComplexNumber instance = new ComplexNumber(5.6, 0);
+        String expResult = "5.6";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+    }
+
+    @Test // Test Case 4: toString di un numero complesso con solo parte immaginaria
+    public void testToString4() {
+        System.out.println("toString");
+        ComplexNumber instance = new ComplexNumber(0, -2.3);
+        String expResult = "0.0-2.3j";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+    }
+
+    @Test // Test Case 5: toString di zero come numero complesso
+    public void testToString5() {
+        System.out.println("toString");
+        ComplexNumber instance = new ComplexNumber(0, 0);
+        String expResult = "0.0";
+        String result = instance.toString();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -241,8 +275,8 @@ public class ComplexNumberTest {
     public void testMultiply3() {
         System.out.println("multiply");
         ComplexNumber c = new ComplexNumber(2.7, 5.03);
-        ComplexNumber instance = new ComplexNumber(3.2, -6.91);
-        ComplexNumber expResult = new ComplexNumber(43.39, -2.56);
+        ComplexNumber instance = new ComplexNumber(3.245, -6.91);
+        ComplexNumber expResult = new ComplexNumber(43.519, -2.335);
         ComplexNumber result = instance.multiply(c);
         assertEquals(expResult.getRe(), result.getRe(), delta);
         assertEquals(expResult.getIm(), result.getIm(), delta);
@@ -322,8 +356,8 @@ public class ComplexNumberTest {
     public void testDiv3() {
         System.out.println("div");
         ComplexNumber c = new ComplexNumber(2.7, 5.03);
-        ComplexNumber instance = new ComplexNumber(3.2, -6.91);
-        ComplexNumber expResult = new ComplexNumber(-0.8, -1.07);
+        ComplexNumber instance = new ComplexNumber(3.245, -6.91);
+        ComplexNumber expResult = new ComplexNumber(-0.798, -1.073);
         ComplexNumber result = instance.div(c);
         assertEquals(expResult.getRe(), result.getRe(), delta);
         assertEquals(expResult.getIm(), result.getIm(), delta);
@@ -440,8 +474,19 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test // Test Case 6: radice quadrata di zero
+    @Test // Test Case 6: radice quadrata di un numero complesso molto grande
     public void testSqrt6() {
+        System.out.println("sqrt");
+        ComplexNumber instance = new ComplexNumber(7124871.462, 872190.2);
+        ComplexNumber expResult = new ComplexNumber(2674.222, 163.074);
+        ComplexNumber result = instance.sqrt();
+        assertEquals(expResult.getRe(), result.getRe(), delta);
+        assertEquals(expResult.getIm(), result.getIm(), delta);
+    }
+    
+    
+    @Test // Test Case 7: radice quadrata di zero
+    public void testSqrt7() {
         System.out.println("sqrt");
         ComplexNumber instance = new ComplexNumber(0.0, 0.0);
         ComplexNumber expResult = new ComplexNumber(0.0, 0.0);
