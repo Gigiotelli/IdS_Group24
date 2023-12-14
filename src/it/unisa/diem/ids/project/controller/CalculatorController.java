@@ -322,8 +322,8 @@ public class CalculatorController implements Initializable {
         
     }
     
-    public void displayOutputView() {
-        
+    public void displayOutputView(ComplexNumber c) {
+        outputLabel.setText(c.toString());
     }
     
     public void displayStackView(){
@@ -402,10 +402,6 @@ public class CalculatorController implements Initializable {
     @FXML
     private void btnSwapAction(ActionEvent event) throws InsufficientElementException {
         try{
-            /*ComplexNumber c1 = model.getModelStack().getStack().pop();
-            ComplexNumber c2 = model.getModelStack().getStack().pop();
-            model.getModelStack().getStack().push(c1);
-            model.getModelStack().getStack().push(c2);*/
             model.modelSwap();
             displayStackView();
         }catch(InsufficientElementException e){
@@ -416,9 +412,6 @@ public class CalculatorController implements Initializable {
     @FXML
     private void btnDupAction(ActionEvent event) throws InsufficientElementException {
         try{
-            /*ComplexNumber c1 = model.getModelStack().getStack().pop();
-            model.getModelStack().getStack().push(c1);
-            model.getModelStack().getStack().push(c1);*/
             model.modelDup();
             displayStackView();
         }catch(InsufficientElementException e){
@@ -429,11 +422,6 @@ public class CalculatorController implements Initializable {
     @FXML
     private void btnOverAction(ActionEvent event) throws InsufficientElementException {
         try{
-            /*ComplexNumber c1 = model.getModelStack().getStack().pop();
-            ComplexNumber c2 = model.getModelStack().getStack().pop();
-            model.getModelStack().getStack().push(c2);
-            model.getModelStack().getStack().push(c1);
-            model.getModelStack().getStack().push(c2);*/
             model.modelOver();
             displayStackView();
         }catch(InsufficientElementException e){
@@ -443,7 +431,6 @@ public class CalculatorController implements Initializable {
 
     @FXML
     private void btnClearAction(ActionEvent event) {
-        //model.getModelStack().getStack().clear();
         model.modelClear();
         displayStackView();
     }
@@ -451,7 +438,6 @@ public class CalculatorController implements Initializable {
     @FXML
     private void btnDropAction(ActionEvent event) throws InsufficientElementException{
         try {
-            //model.getModelStack().getStack().pop();
             model.modelDrop();
             displayStackView();
         }catch(InsufficientElementException e){
@@ -492,7 +478,7 @@ public class CalculatorController implements Initializable {
                 switch (getInput()) {
                     case "+":
                         try{
-                            model.modelAdd();
+                            displayOutputView(model.modelAdd());
                             displayStackView();
                         }catch(InsufficientElementException e){
                             showException("Error: " + e.getMessage());
@@ -500,7 +486,7 @@ public class CalculatorController implements Initializable {
                         break;
                     case "-":
                         try{
-                            model.modelSub();
+                            displayOutputView(model.modelSub());
                             displayStackView();
                         }catch(InsufficientElementException e){
                             showException("Error: " + e.getMessage());
@@ -508,7 +494,7 @@ public class CalculatorController implements Initializable {
                         break;
                     case "×":
                         try{
-                            model.modelMultiply();
+                            displayOutputView(model.modelMultiply());
                             displayStackView();
                         }catch(InsufficientElementException e){
                             showException("Error: " + e.getMessage());
@@ -516,7 +502,7 @@ public class CalculatorController implements Initializable {
                         break;
                     case "÷":
                         try{
-                            model.modelDiv();
+                            displayOutputView(model.modelDiv());
                             displayStackView();
                         }catch(InsufficientElementException e){
                             showException("Error: " + e.getMessage());
@@ -526,7 +512,7 @@ public class CalculatorController implements Initializable {
                         break;
                     case "±":
                         try{
-                            model.modelReverseSign();
+                            displayOutputView(model.modelReverseSign());
                             displayStackView();
                         }catch(InsufficientElementException e){
                             showException("Error: " + e.getMessage());
@@ -534,7 +520,7 @@ public class CalculatorController implements Initializable {
                         break;
                     case "√":
                         try{
-                            model.modelSqrt();
+                            displayOutputView(model.modelSqrt());
                             displayStackView();
                         }catch(InsufficientElementException e){
                             showException("Error: " + e.getMessage());
