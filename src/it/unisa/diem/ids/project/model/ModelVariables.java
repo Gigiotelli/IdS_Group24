@@ -37,7 +37,7 @@ public class ModelVariables implements VariableOperation {
     // METODI DELL'INTERFACCIA
     @Override
     public void allocation(ComplexNumber c, Character v) {
-        variables.put(v, c);                                  //mette il valore nella variabile della mappa, da usare in super;
+        variables.put(v, c);                                  //mette il valore dallo stack nella variabile della mappa, da usare in super;
     }
 
     @Override
