@@ -485,6 +485,8 @@ public class CalculatorController implements Initializable {
                             displayStackView();
                         }catch(InsufficientElementException e){
                             showException("Error: " + e.getMessage());
+                        }catch(ArithmeticException e){
+                            showException("Error: " + e.getMessage());
                         }
                         break;
                     case "±":
