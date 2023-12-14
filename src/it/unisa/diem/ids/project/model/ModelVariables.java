@@ -42,7 +42,7 @@ public class ModelVariables implements VariableOperation {
 
     @Override
     public ComplexNumber pushVar(Character v) throws VariableNotInitializedException {
-        ComplexNumber c = variables.get(v);                //preleva numero dalla mappa e lo restituisce, da utilizzare nella super;
+        ComplexNumber c = variables.remove(v);                //preleva numero dalla mappa e lo restituisce, da utilizzare nella super;
         if(c==null)
             throw new VariableNotInitializedException("Variable is not initialized");
         return c;
@@ -51,7 +51,7 @@ public class ModelVariables implements VariableOperation {
   
     @Override
     public ComplexNumber addVar(ComplexNumber c, Character v) throws VariableNotInitializedException{
-        ComplexNumber x = variables.get(v);                 //prelevo il numero dalla mappa
+        ComplexNumber x = variables.remove(v);                 //prelevo il numero dalla mappa
         if(x==null)                                          //controllo sull'inizializzazione della variabile
                 throw new VariableNotInitializedException("Variable is not initialized");        
         x = x.add(c);
@@ -62,7 +62,7 @@ public class ModelVariables implements VariableOperation {
     
     @Override
     public ComplexNumber subVar(ComplexNumber c, Character v) throws VariableNotInitializedException {
-        ComplexNumber x = variables.get(v);                 //prelevo il numero dalla mappa
+        ComplexNumber x = variables.remove(v);                 //prelevo il numero dalla mappa
         if(x==null)                                          //controllo sull'inizializzazione della variabile
                 throw new VariableNotInitializedException("Variable is not initialized");        
         x = x.sub(c);
