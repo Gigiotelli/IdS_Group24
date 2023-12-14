@@ -72,7 +72,10 @@ public class ComplexNumber implements ComplexNumberOperation{
         double newRe = this.re * c.re - this.im * c.im;     //moltiplicazione delle parti reali e immaginarie (j^2 è reale)
         double newIm = this.re * c.im + this.im * c.re;     //termini con coefficente immaginario
         
-        return new ComplexNumber(newRe, newIm);
+        String formattedRe = String.format(Locale.US, "%.3f", newRe);
+        String formattedIm = String.format(Locale.US, "%.3f", newIm);
+
+        return new ComplexNumber(Double.parseDouble(formattedRe), Double.parseDouble(formattedIm));
     }
 
     @Override
@@ -87,8 +90,8 @@ public class ComplexNumber implements ComplexNumberOperation{
         double newRe = (this.re * c.re + this.im * c.im) / den;
         double newIm = (this.im * c.re - this.re * c.im) / den;
 
-        String formattedRe = String.format(Locale.US, "%.2f", newRe);
-        String formattedIm = String.format(Locale.US, "%.2f", newIm);
+        String formattedRe = String.format(Locale.US, "%.3f", newRe);
+        String formattedIm = String.format(Locale.US, "%.3f", newIm);
 
         return new ComplexNumber(Double.parseDouble(formattedRe), Double.parseDouble(formattedIm));
     }
@@ -106,8 +109,8 @@ public class ComplexNumber implements ComplexNumberOperation{
         double newRe = Math.sqrt((r + this.re) / 2);
         double newIm = Math.sqrt((r - this.re) / 2) * sign;
         
-        String formattedRe = String.format(Locale.US, "%.2f", newRe);
-        String formattedIm = String.format(Locale.US, "%.2f", newIm);
+        String formattedRe = String.format(Locale.US, "%.3f", newRe);
+        String formattedIm = String.format(Locale.US, "%.3f", newIm);
 
         return new ComplexNumber(Double.parseDouble(formattedRe), Double.parseDouble(formattedIm));
     }
