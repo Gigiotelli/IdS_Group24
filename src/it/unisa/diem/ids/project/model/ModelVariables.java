@@ -9,7 +9,11 @@ package it.unisa.diem.ids.project.model;
 
 import it.unisa.diem.ids.project.exceptions.VariableNotInitializedException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 /**
@@ -25,7 +29,14 @@ public class ModelVariables implements VariableOperation {
         for(Character ch = 'a'; ch <= 'z'; ++ch)
             variables.put(ch, null);
     }
+
+    public Map<Character, ComplexNumber> getVariables() {
+        return variables;
+    }
     
+    public ComplexNumber elementFromChar(Character var) {
+       return variables.get(var);
+    }
     
     // TO STRING
     @Override

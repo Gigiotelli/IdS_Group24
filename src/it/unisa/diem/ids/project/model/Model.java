@@ -6,6 +6,7 @@
 package it.unisa.diem.ids.project.model;
 import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
 import it.unisa.diem.ids.project.exceptions.VariableNotInitializedException;
+import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -144,5 +145,9 @@ public class Model {
         ComplexNumber c= s.pop();
         ComplexNumber subVar= variables.subVar(c, v);
         return subVar;
+    }
+
+    public ModelVariables getModelVariables(){
+        return variables;
     }
 }

@@ -14,7 +14,10 @@ import it.unisa.diem.ids.project.model.Model;
 import it.unisa.diem.ids.project.view.*;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +25,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
+import javafx.beans.Observable;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,7 +47,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -55,6 +62,7 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 import javafx.util.Duration;
 
 /**
@@ -66,6 +74,13 @@ public class CalculatorController implements Initializable {
     final private Model model;
     @FXML
     private AnchorPane buttonPane;
+    @FXML
+    private Button btnTopCalc;
+    @FXML
+    private Button btnTopVar;
+    @FXML
+    private Pane tabVarPane;  
+    
         public CalculatorController() {
             this.model = new Model();    
         }
@@ -131,15 +146,64 @@ public class CalculatorController implements Initializable {
     
     
     @FXML
-    private ListView<String> stackList; 
+    private TextField fieldA;
+    @FXML
+    private TextField fieldB;
+    @FXML
+    private TextField fieldC;
+    @FXML
+    private TextField fieldD;
+    @FXML
+    private TextField fieldE;
+    @FXML
+    private TextField fieldF;
+    @FXML
+    private TextField fieldG;
+    @FXML
+    private TextField fieldH;
+    @FXML
+    private TextField fieldI;
+    @FXML
+    private TextField fieldJ;
+    @FXML
+    private TextField fieldK;
+    @FXML
+    private TextField fieldL;
+    @FXML
+    private TextField fieldM;
+    @FXML
+    private TextField fieldN;
+    @FXML
+    private TextField fieldO;
+    @FXML
+    private TextField fieldP;
+    @FXML
+    private TextField fieldQ;
+    @FXML
+    private TextField fieldR;
+    @FXML
+    private TextField fieldS;
+    @FXML
+    private TextField fieldT;
+    @FXML
+    private TextField fieldU;
+    @FXML
+    private TextField fieldV;
+    @FXML
+    private TextField fieldX;
+    @FXML
+    private TextField fieldY;
+    @FXML
+    private TextField fieldW;
+    @FXML
+    private TextField fieldZ;
     
-    private int iVar = 0;
-    private GridPane varGrid;        
+    @FXML
+    private ListView<String> stackList;  
     
+    private List<ComplexNumber> varList;
     
-    
-    
-    // metodo per ottenere la stringa inserita in input
+// metodo per ottenere la stringa inserita in input
     public String getInput(){   
         return inputLabel.getText();    
     }
@@ -285,17 +349,32 @@ public class CalculatorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setInput(clear());
-        outputLabel.setText("");
+        outputLabel.setText(clear());
+               
+        displayTabView();
         
-        stackList.setItems(model.getModelStack().toStringList());
+        displayStackView();
         
-        // Set default value per le variabili
+        tabVarPane.setVisible(false);
         
-
     }    
     
     public void displayTabView() {
-        
+     
+        for (char lettera = 'a'; lettera <= 'z'; lettera++) {
+            String nomeCampo = "field" + Character.toUpperCase(lettera);
+
+            try {
+                TextField campo = (TextField) CalculatorController.class.getDeclaredField(nomeCampo).get(this);
+                if (model.getModelVariables().elementFromChar(lettera) != null) {
+                    campo.setText(model.getModelVariables().elementFromChar(lettera).toString());
+                } else {
+                    campo.setText("");
+                }
+            } catch (NoSuchFieldException | IllegalAccessException | IllegalArgumentException e) {
+                e.printStackTrace(); 
+            }
+        }       
     }
     
     public void displayOutputView(ComplexNumber c) {
@@ -340,7 +419,7 @@ public class CalculatorController implements Initializable {
             showException("Error : " + ex.getMessage());
         }
         
-        
+        displayTabView();
     }
  
     @FXML
@@ -361,7 +440,7 @@ public class CalculatorController implements Initializable {
             showException("Error : " + ex.getMessage());
         }
         
-        
+        displayTabView();
     }
 
     @FXML
@@ -383,6 +462,7 @@ public class CalculatorController implements Initializable {
         } catch (SyntaxException ex) {
             showException("Error : " + ex.getMessage());
         }
+        displayTabView();
     }
 
     @FXML
@@ -404,7 +484,7 @@ public class CalculatorController implements Initializable {
         } catch (SyntaxException ex) {
             showException("Error : " + ex.getMessage());
         }
-        
+        displayTabView();
     }
 
     
@@ -558,6 +638,27 @@ public class CalculatorController implements Initializable {
     public void insertVar(String var) {
         setInput(clear());
         setInput(var);
+    }
+
+    @FXML
+    private void btnTopCalcAction(ActionEvent event) {
+        // nascondo il pannello delle var
+        tabVarPane.setVisible(false);
+        
+        // rendo attivo il bottone var e disattivo quello della calcolatrice
+        btnTopVar.setStyle("-fx-background-color:  #898989; -fx-background-radius: 0 0 18 18;");
+        btnTopCalc.setStyle("-fx-background-color: #f5faff; -fx-background-radius: 0 0 18 18;");
+    }
+
+    @FXML
+    private void btnTopVarAction(ActionEvent event) {
+        
+        // mostro il pannello delle var
+        tabVarPane.setVisible(true);
+        
+        // rendo attivo il bottone var e disattivo quello della calcolatrice
+        btnTopCalc.setStyle("-fx-background-color:  #898989; -fx-background-radius: 0 0 18 18;");
+        btnTopVar.setStyle("-fx-background-color: #f5faff; -fx-background-radius: 0 0 18 18;");
     }
     
 }
