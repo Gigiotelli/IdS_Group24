@@ -171,7 +171,6 @@ public class CalculatorController implements Initializable {
             real = Double.parseDouble(m.group());
             input = input.substring(m.end());
             m = doublePattern.matcher(input);
-            System.out.println("INPUT: "+input);
             if(input.equals("j")) {
                 immaginary = real;
                 real = 0.0;
@@ -187,16 +186,13 @@ public class CalculatorController implements Initializable {
             } else if (input.matches("[-+]j")) {
                 immaginary = input.startsWith("-") ? -1.0 : 1.0;
             }
-                    else {
-                        //throw new NumberFormatException();
-                    }
+                    
                 } else if (input.matches("[-+]j")) {
                     immaginary = input.startsWith("-") ? -1.0 : 1.0;
                 } 
         
         re = real;
         im = immaginary;
-        System.out.println("RE: "+re+"\tIM: "+im);
         return new ComplexNumber(re, im);
     }
     
