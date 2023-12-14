@@ -8,6 +8,7 @@ package it.unisa.diem.ids.project.controller;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
 import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
 import it.unisa.diem.ids.project.exceptions.SyntaxException;
+import it.unisa.diem.ids.project.exceptions.VariableNotInitializedException;
 import it.unisa.diem.ids.project.model.ComplexNumber;
 import it.unisa.diem.ids.project.model.Model;
 import it.unisa.diem.ids.project.view.*;
@@ -346,10 +347,44 @@ public class CalculatorController implements Initializable {
 ////////////RIGHE CHE STA MODIFICANDO ANDREA DONT TOUCH SI SFANCULA GIT!!!
     @FXML
     private void btnAssignVarAction(ActionEvent event) {
+        
+        String input = getInput();
+        if(input.matches("[a-z]")){
+            try {
+                model.modelAllocation(input.charAt(0));
+                //model.getModelStack().getStack().lastElement()
+            } catch (InsufficientElementException ex) {
+                showException("Error: " + ex.getMessage());
+            }
+        }else
+            try {
+                throw new SyntaxException("String not valid as a variable");
+        } catch (SyntaxException ex) {
+            showException("Error : " + ex.getMessage());
+        }
+        
+        
     }
-
+ 
     @FXML
     private void btnPushVarAction(ActionEvent event) {
+        
+        String input = getInput();
+        if(input.matches("[a-z]")){
+            try {
+                model.modelPushVar(input.charAt(0));
+                
+            } catch (VariableNotInitializedException ex) {
+                showException("Error: " + ex.getMessage());
+            }
+        }else
+            try {
+                throw new SyntaxException("String not valid as a variable");
+        } catch (SyntaxException ex) {
+            showException("Error : " + ex.getMessage());
+        }
+        
+        
     }
 
     @FXML
