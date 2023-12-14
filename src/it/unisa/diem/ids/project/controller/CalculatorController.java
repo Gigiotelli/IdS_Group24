@@ -361,35 +361,47 @@ public class CalculatorController implements Initializable {
 
     @FXML
     private void btnSwapAction(ActionEvent event) throws InsufficientElementException {
-        // MANCANO I CONTROLLI E LE ECCEZIONI
-        /*ComplexNumber c1 = model.getModelStack().getStack().pop();
-        ComplexNumber c2 = model.getModelStack().getStack().pop();
-        model.getModelStack().getStack().push(c1);
-        model.getModelStack().getStack().push(c2);*/
-        model.modelSwap();
-        displayStackView();
+        try{
+            /*ComplexNumber c1 = model.getModelStack().getStack().pop();
+            ComplexNumber c2 = model.getModelStack().getStack().pop();
+            model.getModelStack().getStack().push(c1);
+            model.getModelStack().getStack().push(c2);*/
+            model.modelSwap();
+            displayStackView();
+        }
+        catch(InsufficientElementException e){
+            showException("Error: " + e.getMessage());
+        }
     }
 
     @FXML
     private void btnDupAction(ActionEvent event) throws InsufficientElementException {
-        // MANCANO I CONTROLLI E LE ECCEZIONI
-        /*ComplexNumber c1 = model.getModelStack().getStack().pop();
-        model.getModelStack().getStack().push(c1);
-        model.getModelStack().getStack().push(c1);*/
-        model.modelDup();
-        displayStackView();
+        try{
+            /*ComplexNumber c1 = model.getModelStack().getStack().pop();
+            model.getModelStack().getStack().push(c1);
+            model.getModelStack().getStack().push(c1);*/
+            model.modelDup();
+            displayStackView();
+        }
+        catch(InsufficientElementException e){
+            showException("Error: " + e.getMessage());
+        }
     }
 
     @FXML
     private void btnOverAction(ActionEvent event) throws InsufficientElementException {
-        // MANCANO I CONTROLLI E LE ECCEZIONI
-        /*ComplexNumber c1 = model.getModelStack().getStack().pop();
-        ComplexNumber c2 = model.getModelStack().getStack().pop();
-        model.getModelStack().getStack().push(c2);
-        model.getModelStack().getStack().push(c1);
-        model.getModelStack().getStack().push(c2);*/
-        model.modelOver();
-        displayStackView();
+        try{
+            /*ComplexNumber c1 = model.getModelStack().getStack().pop();
+            ComplexNumber c2 = model.getModelStack().getStack().pop();
+            model.getModelStack().getStack().push(c2);
+            model.getModelStack().getStack().push(c1);
+            model.getModelStack().getStack().push(c2);*/
+            model.modelOver();
+            displayStackView();
+        }
+        catch(InsufficientElementException e){
+            showException("Error: " + e.getMessage());
+        }
     }
 
     @FXML
@@ -401,7 +413,6 @@ public class CalculatorController implements Initializable {
 
     @FXML
     private void btnDropAction(ActionEvent event) throws InsufficientElementException{
-        // MANCANO I CONTROLLI E LE ECCEZIONI
         try {
             //model.getModelStack().getStack().pop();
             model.modelDrop();
