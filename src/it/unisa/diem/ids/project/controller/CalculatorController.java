@@ -7,6 +7,7 @@ package it.unisa.diem.ids.project.controller;
 
 import com.sun.javafx.scene.control.skin.VirtualFlow;
 import it.unisa.diem.ids.project.exceptions.InsufficientElementException;
+import it.unisa.diem.ids.project.exceptions.SyntaxException;
 import it.unisa.diem.ids.project.model.ComplexNumber;
 import it.unisa.diem.ids.project.model.Model;
 import it.unisa.diem.ids.project.view.*;
@@ -324,32 +325,21 @@ public class CalculatorController implements Initializable {
         
     }
     
-    public void displayStackView() throws InsufficientElementException {
-        /*model.getModelStack().getStack().push(c);
-        model.getModelStack().getStack().push(c);
-        outputLabel.setText(model.getModelStack().toString());
+    public void displayStackView(){
         
-        try{
-            c= model.modelAdd();
-        }catch(InsufficientElementException e){
-            showException("Error: Invalid number of elements in Stack");
-        }
-        outputLabel.setText(model.getModelStack().toString());
-        
-        stackList.setItems(model.getModelStack().toStringList());*/
-
+        stackList.setItems(model.getModelStack().toStringList());
     }
     
     public void displayKeyboard() {
-        
+        //Insieme dei bottoni che permettono la visualizzazione dei numeri
     }
     
     public void displayVariables() {
-        
+        //Insieme dei bottoni che permettono la visualizzazione il menù delle variabili
     }
     
     public void displayOperations() {
-        
+        //Insieme dei bottoni che permettono visualizzazione delle operazioni eseguibili sulla calcolatrice
     }
 
     @FXML
@@ -370,46 +360,55 @@ public class CalculatorController implements Initializable {
 
 
     @FXML
-    private void btnSwapAction(ActionEvent event) {
+    private void btnSwapAction(ActionEvent event) throws InsufficientElementException {
         // MANCANO I CONTROLLI E LE ECCEZIONI
-        ComplexNumber c1 = model.getModelStack().getStack().pop();
+        /*ComplexNumber c1 = model.getModelStack().getStack().pop();
         ComplexNumber c2 = model.getModelStack().getStack().pop();
         model.getModelStack().getStack().push(c1);
-        model.getModelStack().getStack().push(c2);
-        stackList.setItems(model.getModelStack().toStringList());
+        model.getModelStack().getStack().push(c2);*/
+        model.modelSwap();
+        displayStackView();
     }
 
     @FXML
-    private void btnDupAction(ActionEvent event) {
+    private void btnDupAction(ActionEvent event) throws InsufficientElementException {
         // MANCANO I CONTROLLI E LE ECCEZIONI
-        ComplexNumber c1 = model.getModelStack().getStack().pop();
+        /*ComplexNumber c1 = model.getModelStack().getStack().pop();
         model.getModelStack().getStack().push(c1);
-        model.getModelStack().getStack().push(c1);
-        stackList.setItems(model.getModelStack().toStringList());
+        model.getModelStack().getStack().push(c1);*/
+        model.modelDup();
+        displayStackView();
     }
 
     @FXML
-    private void btnOverAction(ActionEvent event) {
+    private void btnOverAction(ActionEvent event) throws InsufficientElementException {
         // MANCANO I CONTROLLI E LE ECCEZIONI
-        ComplexNumber c1 = model.getModelStack().getStack().pop();
+        /*ComplexNumber c1 = model.getModelStack().getStack().pop();
         ComplexNumber c2 = model.getModelStack().getStack().pop();
         model.getModelStack().getStack().push(c2);
         model.getModelStack().getStack().push(c1);
-        model.getModelStack().getStack().push(c2);
-        stackList.setItems(model.getModelStack().toStringList());
+        model.getModelStack().getStack().push(c2);*/
+        model.modelOver();
+        displayStackView();
     }
 
     @FXML
     private void btnClearAction(ActionEvent event) {
-        model.getModelStack().getStack().clear();
-        stackList.setItems(model.getModelStack().toStringList());
+        //model.getModelStack().getStack().clear();
+        model.modelClear();
+        displayStackView();
     }
 
     @FXML
-    private void btnDropAction(ActionEvent event) {
+    private void btnDropAction(ActionEvent event) throws InsufficientElementException{
         // MANCANO I CONTROLLI E LE ECCEZIONI
-        model.getModelStack().getStack().pop();
-        stackList.setItems(model.getModelStack().toStringList());
+        try {
+            //model.getModelStack().getStack().pop();
+            model.modelDrop();
+            displayStackView();
+        }catch(InsufficientElementException e){
+            showException("Error: " + e.getMessage());
+        }
     }
 
     @FXML
@@ -439,41 +438,50 @@ public class CalculatorController implements Initializable {
     }
 
     @FXML
-    private void btnEnterAction(ActionEvent event) throws InsufficientElementException {
-        switch (getInput()) {
-            case "+":
-                model.modelAdd();
-                stackList.setItems(model.getModelStack().toStringList());
-                break;
-            case "-":
-                model.modelSub();
-                stackList.setItems(model.getModelStack().toStringList());
-                break;
-            case "×":
-                model.modelMultiply();
-                stackList.setItems(model.getModelStack().toStringList());
-                break;
-            case "÷":
-                model.modelDiv();
-                stackList.setItems(model.getModelStack().toStringList());
-                break;
-            case "±":
-                model.modelReverseSign();
-                stackList.setItems(model.getModelStack().toStringList());
-                break;
-            case "√":
-                model.modelSqrt();
-                stackList.setItems(model.getModelStack().toStringList());
-                break;
-            default:
-                if(isComplexNumber(getInput())){
-                    ComplexNumber num = parseComplexNumber(getInput());
-                    model.getModelStack().getStack().push(num);
-                    stackList.setItems(model.getModelStack().toStringList());
+    private void btnEnterAction(ActionEvent event) throws InsufficientElementException, SyntaxException {
+        if(getInput()!=null && !getInput().isEmpty()){
+            try {
+                switch (getInput()) {
+                    case "+":
+                        model.modelAdd();
+                        //stackList.setItems(model.getModelStack().toStringList());
+                        displayStackView();
+                        break;
+                    case "-":
+                        model.modelSub();
+                        displayStackView();
+                        break;
+                    case "×":
+                        model.modelMultiply();
+                        displayStackView();
+                        break;
+                    case "÷":
+                        model.modelDiv();
+                        displayStackView();
+                        break;
+                    case "±":
+                        model.modelReverseSign();
+                        displayStackView();
+                        break;
+                    case "√":
+                        model.modelSqrt();
+                        displayStackView();
+                        break;
+                    default:
+                        if (isComplexNumber(getInput())) {
+                            ComplexNumber num = parseComplexNumber(getInput());
+                            model.getModelStack().getStack().push(num);
+                            displayStackView();
+                        } else {
+                            throw new SyntaxException("Invalid input");
+                        }
                 }
+            } catch (SyntaxException e) {
+                showException("Error: " + e.getMessage());
+            } finally {
+                setInput(clear());
+            }
         }
-        setInput(clear());
     }
- 
     
 }
