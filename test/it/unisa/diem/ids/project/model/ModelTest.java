@@ -176,7 +176,7 @@ public class ModelTest {
     /**
      * Test of modelDiv method, of class Model.
      */
-    @Test
+    @Test // Test Case 1: Divisione di due elementi in cima allo stack (contiene almeno due elementi)
     public void testModelDiv1() throws Exception {
         System.out.println("modelDiv");
         Model model = new Model();
