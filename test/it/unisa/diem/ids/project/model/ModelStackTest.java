@@ -45,8 +45,9 @@ public class ModelStackTest {
     /**
      * Test of clear method, of class ModelStack.
      */
-    @Test // Test Case 1: eliminazione di tutti gli elementi dallo stack
+    @Test // Test Case 1: Eliminazione di tutti gli elementi dallo stack
     public void testClear() {
+        System.out.println("clear");
         ModelStack modelStack = new ModelStack();
         modelStack.getStack().push(new ComplexNumber(0, 1));
         modelStack.getStack().push(new ComplexNumber(1.2, -2.5));
@@ -59,8 +60,9 @@ public class ModelStackTest {
     /**
      * Test of drop method, of class ModelStack.
      */
-    @Test // Test Case 1: rimozione dell'elemento in cima allo stack(contiene un solo elemento)
+    @Test // Test Case 1: Rimozione dell'elemento in cima allo stack(contiene un solo elemento)
     public void testDrop1() throws Exception {
+        System.out.println("drop");
         ModelStack modelStack = new ModelStack();
         modelStack.getStack().push(new ComplexNumber(1, 1));
         
@@ -69,8 +71,9 @@ public class ModelStackTest {
         assertTrue(modelStack.getStack().isEmpty()); //Verifica che lo stack sia vuoto
     }
     
-    @Test // Test Case 2: rimozione dell'elemento in cima allo stack(contiene più di un elemento)
+    @Test // Test Case 2: Rimozione dell'elemento in cima allo stack(contiene più di un elemento)
     public void testDrop2() throws Exception {
+        System.out.println("drop");
         ModelStack modelStack = new ModelStack();
         modelStack.getStack().push(new ComplexNumber(1, 1));
         modelStack.getStack().push(new ComplexNumber(0.3, -4));
@@ -87,8 +90,9 @@ public class ModelStackTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test // Test Case 3: exception quando lo stack è vuoto
+    @Test // Test Case 3: Exception quando lo stack è vuoto
     public void testDrop3() throws Exception{
+        System.out.println("drop");
         ModelStack modelStack = new ModelStack();
 
         assertThrows(InsufficientElementException.class, () -> {
@@ -99,8 +103,9 @@ public class ModelStackTest {
     /**
      * Test of dup method, of class ModelStack.
      */
-    @Test // Test Case 1: duplicazione dell'elemento in cima allo stack(contiene un solo elemento)
+    @Test // Test Case 1: Duplicazione dell'elemento in cima allo stack(contiene un solo elemento)
     public void testDup1() throws Exception {
+        System.out.println("dup");
         ModelStack modelStack = new ModelStack();
         modelStack.getStack().push(new ComplexNumber(1, 1));
         
@@ -118,26 +123,28 @@ public class ModelStackTest {
         //Nessun controllo sul valore presente nella penultima posizione poiché il metodo controlla il valore pushato attraverso la peek() della classe Stack
     }
     
-    @Test // Test Case 2: duplicazione dell'elemento in cima allo stack(contiene più di un elemento)
+    @Test // Test Case 2: Duplicazione dell'elemento in cima allo stack(contiene più di un elemento)
     public void testDup2() throws Exception {
-    ModelStack modelStack = new ModelStack();
-    modelStack.getStack().push(new ComplexNumber(1, 1));
-    modelStack.getStack().push(new ComplexNumber(0.3, -4));
+        System.out.println("dup");
+        ModelStack modelStack = new ModelStack();
+        modelStack.getStack().push(new ComplexNumber(1, 1));
+        modelStack.getStack().push(new ComplexNumber(0.3, -4));
 
-    modelStack.dup();
+        modelStack.dup();
 
-    assertEquals(3, modelStack.getStack().size()); // Verifica che ora la dimensione dello stack sia 3
+        assertEquals(3, modelStack.getStack().size()); // Verifica che ora la dimensione dello stack sia 3
 
-    // Verifica che l'elemento in cima allo stack sia duplicato correttamente
-    ComplexNumber expResult = new ComplexNumber(0.3, -4);
-    ComplexNumber result = modelStack.getStack().peek();
+        // Verifica che l'elemento in cima allo stack sia duplicato correttamente
+        ComplexNumber expResult = new ComplexNumber(0.3, -4);
+        ComplexNumber result = modelStack.getStack().peek();
 
-    assertEquals(expResult.getRe(), result.getRe(), delta);
-    assertEquals(expResult.getIm(), result.getIm(), delta);
+        assertEquals(expResult.getRe(), result.getRe(), delta);
+        assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
     @Test // Test Case 3: exception quando lo stack è vuoto
     public void testDup3() throws Exception{
+        System.out.println("dup");
         ModelStack modelStack = new ModelStack();
 
         assertThrows(InsufficientElementException.class, () -> {
@@ -148,8 +155,9 @@ public class ModelStackTest {
     /**
      * Test of swap method, of class ModelStack.
      */
-    @Test // Test Case 1: scambio dei due elementi in cima allo stack(contiene almeno due elementi)
+    @Test // Test Case 1: Scambio dei due elementi in cima allo stack(contiene almeno due elementi)
     public void testSwap1() throws Exception {
+        System.out.println("swap");
         ModelStack modelStack = new ModelStack();
         modelStack.getStack().push(new ComplexNumber(1, 1));
         modelStack.getStack().push(new ComplexNumber(0.3, -4));
@@ -172,8 +180,9 @@ public class ModelStackTest {
         assertEquals(expResultSec.getIm(), secElem.getIm(), delta);   
     }
 
-    @Test // Test Case 2: exception quando lo stack è vuoto
+    @Test // Test Case 2: Exception quando lo stack è vuoto
     public void testSwap2() {
+        System.out.println("swap");
         ModelStack modelStack = new ModelStack();
         
         assertThrows(InsufficientElementException.class, () -> {
@@ -181,8 +190,9 @@ public class ModelStackTest {
         });
     }
 
-    @Test // Test Case 3: exception quando lo stack contiene meno di 2 elementi
+    @Test // Test Case 3: Exception quando lo stack contiene meno di 2 elementi
     public void testSwap3() {
+        System.out.println("swap");
         ModelStack modelStack = new ModelStack();
         modelStack.getStack().push(new ComplexNumber(1, 1));
         
@@ -194,8 +204,9 @@ public class ModelStackTest {
     /**
      * Test of over method, of class ModelStack.
      */
-    @Test // Test Case 1: inserimento di una copia del penultimo elemento in cima allo stack (contiene almeno due elementi)
+    @Test // Test Case 1: Inserimento di una copia del penultimo elemento in cima allo stack (contiene almeno due elementi)
     public void testOver1() throws Exception {
+        System.out.println("over");
         ModelStack modelStack = new ModelStack();
         modelStack.getStack().push(new ComplexNumber(1, 1));
         modelStack.getStack().push(new ComplexNumber(0.3, -4));
@@ -212,8 +223,9 @@ public class ModelStackTest {
         assertEquals(expResultTop.getIm(), topElem.getIm(), delta);
     }
 
-    @Test // Test Case 2: exception quando lo stack è vuoto
+    @Test // Test Case 2: Exception quando lo stack è vuoto
     public void testOver2() {
+        System.out.println("over");
         ModelStack modelStack = new ModelStack();
 
         assertThrows(InsufficientElementException.class, () -> {
@@ -221,8 +233,9 @@ public class ModelStackTest {
         });
     }
 
-    @Test // Test Case 3: exception quando lo stack contiene meno di 2 elementi
+    @Test // Test Case 3: Exception quando lo stack contiene meno di 2 elementi
     public void testOver3() {
+        System.out.println("over");
         ModelStack modelStack = new ModelStack();
         modelStack.getStack().push(new ComplexNumber(1, 1));
 
