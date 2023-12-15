@@ -74,7 +74,7 @@ public class ModelVariablesTest {
     }
     
     @Test // Test Case 3: Allocazione numero complesso associato a una variabile già valorizzata 'z'
-    public void testAllocationExistingKey() {
+    public void testAllocation3() {
         System.out.println("allocation");
 
         ModelVariables instance = new ModelVariables();

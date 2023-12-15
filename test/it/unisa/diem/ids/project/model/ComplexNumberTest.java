@@ -396,8 +396,8 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 8: Divisione di 0 per un numero complesso
-    public void testDiv8() {
+    @Test // Test Case 7: Divisione di 0 per un numero complesso
+    public void testDiv7() {
         System.out.println("div");
         ComplexNumber c = new ComplexNumber(2, -5);
         ComplexNumber instance = new ComplexNumber(0, 0);
@@ -407,8 +407,8 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test // Test Case 9: Divisione di un numero complesso per 0
-        public void testDiv9() {
+    @Test // Test Case 8: Divisione di un numero complesso per 0
+        public void testDiv8() {
         System.out.println("div");
         ComplexNumber c = new ComplexNumber(0, 0);
         ComplexNumber instance = new ComplexNumber(2, -5);
