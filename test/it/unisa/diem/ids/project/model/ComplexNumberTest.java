@@ -41,7 +41,7 @@ public class ComplexNumberTest {
     /**
      * Test of toString method, of class ComplexNumber.
      */
-    @Test // Test Case 1: toString di un numero complesso con parte reale e immaginaria positiva
+    @Test // Test Case 1: Stampa di un numero complesso formattato con parte reale e immaginaria positiva
     public void testToString1() {
         System.out.println("toString");
         ComplexNumber instance = new ComplexNumber(2.5, 3.8);
@@ -50,7 +50,7 @@ public class ComplexNumberTest {
         assertEquals(expResult, result);
     }
 
-    @Test // Test Case 2: toString di un numero complesso con parte reale e immaginaria negativa
+    @Test // Test Case 2: Stampa di un numero complesso formattato con parte reale e immaginaria negativa
     public void testToString2() {
         System.out.println("toString");
         ComplexNumber instance = new ComplexNumber(-1.2, -4.7);
@@ -59,7 +59,7 @@ public class ComplexNumberTest {
         assertEquals(expResult, result);
     }
 
-    @Test // Test Case 3: toString di un numero complesso con solo parte reale
+    @Test // Test Case 3: Stampa di un numero complesso formattato con solo parte reale
     public void testToString3() {
         System.out.println("toString");
         ComplexNumber instance = new ComplexNumber(5.6, 0);
@@ -68,7 +68,7 @@ public class ComplexNumberTest {
         assertEquals(expResult, result);
     }
 
-    @Test // Test Case 4: toString di un numero complesso con solo parte immaginaria
+    @Test // Test Case 4: Stampa di un numero complesso formattato con solo parte immaginaria
     public void testToString4() {
         System.out.println("toString");
         ComplexNumber instance = new ComplexNumber(0, -2.3);
@@ -77,7 +77,7 @@ public class ComplexNumberTest {
         assertEquals(expResult, result);
     }
 
-    @Test // Test Case 5: toString di zero come numero complesso
+    @Test // Test Case 5: Stampa di zero come numero complesso
     public void testToString5() {
         System.out.println("toString");
         ComplexNumber instance = new ComplexNumber(0, 0);
@@ -89,7 +89,7 @@ public class ComplexNumberTest {
     /**
      * Test of add method, of class ComplexNumber.
      */
-    @Test //Test Case 1: somma numeri reali
+    @Test //Test Case 1: Somma numeri reali
     public void testAdd1() {
         System.out.println("add");
         ComplexNumber c = new ComplexNumber(-2, 0);
@@ -100,7 +100,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test //Test Case 2: somma numeri immaginari puri
+    @Test //Test Case 2: Somma numeri immaginari puri
     public void testAdd2() {
         System.out.println("add");
         ComplexNumber c = new ComplexNumber(0, -2);
@@ -111,7 +111,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test //Test Case 3: somma numeri complessi generici
+    @Test //Test Case 3: Somma numeri complessi generici
     public void testAdd3() {
         System.out.println("add");
         ComplexNumber c = new ComplexNumber(2.7, -5.03);
@@ -122,7 +122,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test //Test Case 4: somma numeri complessi coniugati
+    @Test //Test Case 4: Somma numeri complessi coniugati
     public void testAdd4() {
         System.out.println("add");
         ComplexNumber c = new ComplexNumber(2, 5);
@@ -133,7 +133,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test //Test Case 5: somma numeri complessi molto grandi
+    @Test //Test Case 5: Somma numeri complessi molto grandi
     public void testAdd5() {
         System.out.println("add");
         ComplexNumber c = new ComplexNumber(9999999, -7777777);
@@ -144,7 +144,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test //Test Case 6: somma numero complesso e suo opposto
+    @Test //Test Case 6: Somma numero complesso e suo opposto
     public void testAdd6() {
         System.out.println("add");
         ComplexNumber c = new ComplexNumber(2, -5);
@@ -155,7 +155,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test //Test Case 7: somma numero complesso con lo 0
+    @Test //Test Case 7: Somma numero complesso con lo 0
     public void testAdd7() {
         System.out.println("add");
         ComplexNumber c = new ComplexNumber(2, -5);
@@ -169,7 +169,7 @@ public class ComplexNumberTest {
     /**
      * Test of sub method, of class ComplexNumber.
      */
-    @Test //Test Case 1: differenza numeri reali
+    @Test //Test Case 1: Dfferenza numeri reali
     public void testSub1() {
         System.out.println("sub");
         ComplexNumber c = new ComplexNumber(2, 0);
@@ -180,7 +180,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);        
     }
     
-    @Test //Test Case 2: differenza numeri immaginari puri
+    @Test //Test Case 2: Differenza numeri immaginari puri
     public void testSub2() {
         System.out.println("sub");
         ComplexNumber c = new ComplexNumber(0, -2);
@@ -191,7 +191,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);   
     }
     
-    @Test //Test Case 3: differenza numeri complessi generici
+    @Test //Test Case 3: Differenza numeri complessi generici
     public void testSub3() {
         System.out.println("sub");
         ComplexNumber c = new ComplexNumber(2.7, 5.03);
@@ -202,7 +202,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);    
     }
     
-    @Test //Test Case 4: differenza numeri complessi coniugati
+    @Test //Test Case 4: Differenza numeri complessi coniugati
     public void testSub4() {
         System.out.println("sub");
         ComplexNumber c = new ComplexNumber(2, 5);
@@ -213,7 +213,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);        
     }
     
-    @Test //Test Case 5: differenza numeri complessi molto grandi
+    @Test //Test Case 5: Differenza numeri complessi molto grandi
     public void testSub5() {
         System.out.println("sub");
         ComplexNumber c = new ComplexNumber(9999999, -7777777);
@@ -224,7 +224,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);        
     }
     
-    @Test //Test Case 6: differenza numero complesso e suo opposto
+    @Test //Test Case 6: Differenza numero complesso e suo opposto
     public void testSub6() {
         System.out.println("sub");
         ComplexNumber c = new ComplexNumber(2, -5);
@@ -235,7 +235,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);        
     }
     
-    @Test //Test Case 7: differenza numero complesso con lo 0
+    @Test //Test Case 7: Differenza numero complesso con lo 0
     public void testSub7() {
         System.out.println("sub");
         ComplexNumber c = new ComplexNumber(0, 0);
@@ -249,7 +249,7 @@ public class ComplexNumberTest {
     /**
      * Test of multiply method, of class ComplexNumber.
      */
-    @Test //Test Case 1: moltiplicazione di numeri reali
+    @Test //Test Case 1: Moltiplicazione di numeri reali
     public void testMultiply1() {
         System.out.println("multiply");
         ComplexNumber c = new ComplexNumber(2, 0);
@@ -260,7 +260,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test //Test Case 2: moltiplicazione di numeri immaginari puri
+    @Test //Test Case 2: Moltiplicazione di numeri immaginari puri
     public void testMultiply2() {
         System.out.println("multiply");
         ComplexNumber c = new ComplexNumber(0, -2);
@@ -271,7 +271,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test //Test Case 3: moltiplicazione di numeri complessi generici
+    @Test //Test Case 3: Moltiplicazione di numeri complessi generici
     public void testMultiply3() {
         System.out.println("multiply");
         ComplexNumber c = new ComplexNumber(2.7, 5.03);
@@ -282,7 +282,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test //Test Case 4: moltiplicazione di numeri complessi coniugati
+    @Test //Test Case 4: Moltiplicazione di numeri complessi coniugati
     public void testMultiply4() {
         System.out.println("multiply");
         ComplexNumber c = new ComplexNumber(2, 5);
@@ -293,7 +293,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test //Test Case 5: moltiplicazione di numeri complessi molto grandi
+    @Test //Test Case 5: Moltiplicazione di numeri complessi molto grandi
     public void testMultiply5() {
         System.out.println("multiply");
         ComplexNumber c = new ComplexNumber(9999999, -7777777);
@@ -304,7 +304,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test //Test Case 6: moltiplicazione di un numero complesso per il suo opposto
+    @Test //Test Case 6: Moltiplicazione di un numero complesso per il suo opposto
     public void testMultiply6() {
         System.out.println("multiply");
         ComplexNumber c = new ComplexNumber(2, -5);
@@ -315,7 +315,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test //Test Case 7: moltiplicazione di un numero complesso per lo 0
+    @Test //Test Case 7: Moltiplicazione di un numero complesso per lo 0
     public void testMultiply7() {
         System.out.println("multiply");
         ComplexNumber c = new ComplexNumber(0, 0);
@@ -330,7 +330,7 @@ public class ComplexNumberTest {
     /**
      * Test of div method, of class ComplexNumber.
      */
-    @Test //Test Case 1: divisione di numeri reali
+    @Test //Test Case 1: Divisione di numeri reali
     public void testDiv1() {
         System.out.println("div");
         ComplexNumber c = new ComplexNumber(2, 0);
@@ -341,7 +341,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test //Test Case 2: divisione di numeri immaginari puri
+    @Test //Test Case 2: Divisione di numeri immaginari puri
     public void testDiv2() {
         System.out.println("div");
         ComplexNumber c = new ComplexNumber(0, -2);
@@ -352,7 +352,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test //Test Case 3: divisione di numeri complessi generici
+    @Test //Test Case 3: Divisione di numeri complessi generici
     public void testDiv3() {
         System.out.println("div");
         ComplexNumber c = new ComplexNumber(2.7, 5.03);
@@ -363,7 +363,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test //Test Case 4: divisione di numeri complessi coniugati
+    @Test //Test Case 4: Divisione di numeri complessi coniugati
     public void testDiv4() {
         System.out.println("div");
         ComplexNumber c = new ComplexNumber(2, 5);
@@ -374,7 +374,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test //Test Case 5: divisione di numeri complessi molto grandi
+    @Test //Test Case 5: Divisione di numeri complessi molto grandi
     public void testDiv5() {
         System.out.println("div");
         ComplexNumber c = new ComplexNumber(9999999, -7777777);
@@ -385,7 +385,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test //Test Case 6: divisione di un numero complesso per il suo opposto
+    @Test //Test Case 6: Divisione di un numero complesso per il suo opposto
     public void testDiv6() {
         System.out.println("div");
         ComplexNumber c = new ComplexNumber(2, -5);
@@ -396,7 +396,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 8: divisione di 0 per un numero complesso
+    @Test // Test Case 8: Divisione di 0 per un numero complesso
     public void testDiv8() {
         System.out.println("div");
         ComplexNumber c = new ComplexNumber(2, -5);
@@ -407,7 +407,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test // Test Case 9: divisione di un numero complesso per 0
+    @Test // Test Case 9: Divisione di un numero complesso per 0
         public void testDiv9() {
         System.out.println("div");
         ComplexNumber c = new ComplexNumber(0, 0);
@@ -424,7 +424,7 @@ public class ComplexNumberTest {
     /**
      * Test of sqrt method, of class ComplexNumber.
      */
-    @Test // Test Case 1: radice quadrata di un numero reale positivo
+    @Test // Test Case 1: Radice quadrata di un numero reale positivo
     public void testSqrt1() {
         System.out.println("sqrt");
         ComplexNumber instance = new ComplexNumber(4, 0);
@@ -434,7 +434,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 2: radice quadrata di un numero reale negativo
+    @Test // Test Case 2: Radice quadrata di un numero reale negativo
     public void testSqrt2() {
         System.out.println("sqrt");
         ComplexNumber instance = new ComplexNumber(-4, 0);
@@ -444,7 +444,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 3: radice quadrata di un numero immaginario puro positivo
+    @Test // Test Case 3: Radice quadrata di un numero immaginario puro positivo
     public void testSqrt3() {
         System.out.println("sqrt");
         ComplexNumber instance = new ComplexNumber(0, 9);
@@ -454,7 +454,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 4: radice quadrata di un numero immaginario puro negativo
+    @Test // Test Case 4: Radice quadrata di un numero immaginario puro negativo
     public void testSqrt4() {
         System.out.println("sqrt");
         ComplexNumber instance = new ComplexNumber(0, -9);
@@ -464,7 +464,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 5: radice quadrata di un numero complesso generico
+    @Test // Test Case 5: Radice quadrata di un numero complesso generico
     public void testSqrt5() {
         System.out.println("sqrt");
         ComplexNumber instance = new ComplexNumber(1.23, 4.56);
@@ -474,7 +474,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test // Test Case 6: radice quadrata di un numero complesso molto grande
+    @Test // Test Case 6: Radice quadrata di un numero complesso molto grande
     public void testSqrt6() {
         System.out.println("sqrt");
         ComplexNumber instance = new ComplexNumber(7124871.462, 872190.2);
@@ -485,7 +485,7 @@ public class ComplexNumberTest {
     }
     
     
-    @Test // Test Case 7: radice quadrata di zero
+    @Test // Test Case 7: Radice quadrata di zero
     public void testSqrt7() {
         System.out.println("sqrt");
         ComplexNumber instance = new ComplexNumber(0.0, 0.0);
@@ -498,7 +498,7 @@ public class ComplexNumberTest {
     /**
      * Test of reverseSign method, of class ComplexNumber.
      */
-    @Test // Test Case 1: inversione del segno di un numero reale
+    @Test // Test Case 1: Inversione del segno di un numero reale
     public void testReverseSign1() {
         System.out.println("reverseSign");
         ComplexNumber instance = new ComplexNumber(4.0, 0.0);
@@ -508,7 +508,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test // Test Case 2: inversione del segno di un numero immaginario puro negativo
+    @Test // Test Case 2: Inversione del segno di un numero immaginario puro negativo
     public void testReverseSign2() {
         System.out.println("reverseSign");
         ComplexNumber instance = new ComplexNumber(0.0, -9.0);
@@ -518,7 +518,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test // Test Case 3: inversione del segno di un numero complesso generico
+    @Test // Test Case 3: Inversione del segno di un numero complesso generico
     public void testReverseSign3() {
         System.out.println("reverseSign");
         ComplexNumber instance = new ComplexNumber(1.23, 4.56);
@@ -528,7 +528,7 @@ public class ComplexNumberTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 4: inversione del segno di zero
+    @Test // Test Case 4: Inversione del segno di zero
     public void testReverseSign4() {
         System.out.println("reverseSign");
         ComplexNumber instance = new ComplexNumber(0.0, 0.0);
