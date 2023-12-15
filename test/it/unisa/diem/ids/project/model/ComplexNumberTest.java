@@ -59,7 +59,7 @@ public class ComplexNumberTest {
         assertEquals(expResult, result);
     }
 
-    @Test // Test Case 3: Stampa di un numero complesso formattato con solo parte reale
+    @Test // Test Case 3: Stampa di un numero reale
     public void testToString3() {
         System.out.println("toString");
         ComplexNumber instance = new ComplexNumber(5.6, 0);
