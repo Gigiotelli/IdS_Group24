@@ -64,7 +64,7 @@ public class ModelTest {
         assertEquals(expectedResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 2: InsufficientElementException quando lo stack è vuoto
+    @Test // Test Case 2: Exception quando lo stack è vuoto
     public void testModelAdd2() {
         System.out.println("modelAdd");
         Model model = new Model();
@@ -74,7 +74,7 @@ public class ModelTest {
         });
     }
 
-    @Test // Test Case 3: InsufficientElementException quando lo stack contiene meno di 2 elementi
+    @Test // Test Case 3: Exception quando lo stack contiene meno di 2 elementi
     public void testModelAdd3() {
         System.out.println("modelAdd");
         Model model = new Model();
@@ -108,7 +108,7 @@ public class ModelTest {
         assertEquals(expectedResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 2: InsufficientElementException quando lo stack è vuoto
+    @Test // Test Case 2: Exception quando lo stack è vuoto
     public void testModelSub2() {
         System.out.println("modelSub");
         Model model = new Model();
@@ -118,7 +118,7 @@ public class ModelTest {
         });
     }
 
-    @Test // Test Case 3: InsufficientElementException quando lo stack contiene meno di 2 elementi
+    @Test // Test Case 3: Exception quando lo stack contiene meno di 2 elementi
     public void testModelSub3() {
         System.out.println("modelSub");
         Model model = new Model();
@@ -152,7 +152,7 @@ public class ModelTest {
         assertEquals(expectedResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 2: InsufficientElementException quando lo stack è vuoto
+    @Test // Test Case 2: Exception quando lo stack è vuoto
     public void testModelMultiply2() {
         System.out.println("modelMultiply");
         Model model = new Model();
@@ -162,7 +162,7 @@ public class ModelTest {
         });
     }
 
-    @Test // Test Case 3: InsufficientElementException quando lo stack contiene meno di 2 elementi
+    @Test // Test Case 3: Exception quando lo stack contiene meno di 2 elementi
     public void testModelMultiply3() {
         System.out.println("modelMultiply");
         Model model = new Model();
@@ -196,7 +196,7 @@ public class ModelTest {
         assertEquals(expectedResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 2: InsufficientElementException quando lo stack è vuoto
+    @Test // Test Case 2: Exception quando lo stack è vuoto
     public void testModelDiv2() {
         System.out.println("modelDiv");
         Model model = new Model();
@@ -206,7 +206,7 @@ public class ModelTest {
         });
     }
 
-    @Test // Test Case 3: InsufficientElementException quando lo stack contiene meno di 2 elementi
+    @Test // Test Case 3: Exception quando lo stack contiene meno di 2 elementi
     public void testModelDiv3() {
         System.out.println("modelDiv");
         Model model = new Model();
@@ -239,7 +239,7 @@ public class ModelTest {
         assertEquals(expectedResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 2: InsufficientElementException quando lo stack è vuoto
+    @Test // Test Case 2: Exception quando lo stack è vuoto
     public void testModelSqrt2() {
         System.out.println("modelSqrt");
         Model model = new Model();
@@ -271,7 +271,7 @@ public class ModelTest {
         assertEquals(expectedResult.getIm(), result.getIm(), delta);
     }
 
-    @Test // Test Case 2: InsufficientElementException quando lo stack è vuoto
+    @Test // Test Case 2: Exception quando lo stack è vuoto
     public void testModelReverseSign2() {
         System.out.println("modelReverseSign");
         Model model = new Model();
@@ -307,7 +307,7 @@ public class ModelTest {
         assertEquals(numElemBefore - 1, numElemAfter);
     }
 
-    @Test // Test Case 2: Eccezione elementi nello stack insufficienti
+    @Test // Test Case 2: Exception elementi nello stack insufficienti
     public void testModelAllocation2() throws Exception {
         System.out.println("modelAllocation");
         
@@ -342,7 +342,7 @@ public class ModelTest {
         assertEquals(numElemBefore + 1, numElemAfter);
     }
     
-    @Test // Test Case 2: Eccezione push di una variabile con valore null
+    @Test // Test Case 2: Exception push di una variabile con valore null
     public void testModelPushVar2() throws Exception {
         System.out.println("modelPushVar");
         
@@ -385,7 +385,7 @@ public class ModelTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test // Test Case 2: Eccezione variabile non inizializzata
+    @Test // Test Case 2: Exception variabile non inizializzata
     public void testModelAddVar2() throws Exception {
         System.out.println("modelAddVar");
         
@@ -404,7 +404,7 @@ public class ModelTest {
     }
     
     
-    @Test // Test Case 3: Eccezione elementi nello stack insufficienti
+    @Test // Test Case 3: Exception elementi nello stack insufficienti
     public void testModelAddVar3() throws Exception {
         System.out.println("modelAddVar");
         
@@ -453,7 +453,7 @@ public class ModelTest {
         assertEquals(expResult.getIm(), result.getIm(), delta);
     }
     
-    @Test // Test Case 2: Eccezione variabile non inizializzata
+    @Test // Test Case 2: Exception variabile non inizializzata
     public void testModelSubVar2() throws Exception {
         System.out.println("modelSubVar");
         
@@ -472,7 +472,7 @@ public class ModelTest {
     }
     
     
-    @Test // Test Case 3: Eccezione elementi nello stack insufficienti
+    @Test // Test Case 3: Exception elementi nello stack insufficienti
     public void testModelSubVar3() throws Exception {
         System.out.println("modelSubVar");
         
