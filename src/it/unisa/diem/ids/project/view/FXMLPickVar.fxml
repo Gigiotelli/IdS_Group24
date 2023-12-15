@@ -53,7 +53,7 @@
             <Button fx:id="btnY" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#charBtnAction" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #66bcff;" text="y" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <Button fx:id="btnW" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#charBtnAction" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #66bcff;" text="w" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             <Button fx:id="btnZ" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#charBtnAction" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #66bcff;" text="z" GridPane.rowIndex="5" />
-            <Button id="closeVarBtn" fx:id="closeVarBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#closeVarBtnAction" prefHeight="40.0" prefWidth="186.0" style="-fx-background-color: ff5959;" text="chiudi" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="5">
+            <Button id="closeVarBtn" fx:id="closeVarBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#closeVarBtnAction" prefHeight="40.0" prefWidth="186.0" style="-fx-background-color: ff5959;" text="close" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="5">
                <font>
                   <Font name="Calibri" size="12.0" />
                </font>

@@ -281,7 +281,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnSelectVar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnSelectVarAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #66bcff; -fx-background-radius: 18;" text="Var" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="4">
+                  <Button fx:id="btnSelectVar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnSelectVarAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #66bcff; -fx-background-radius: 18;" text="var" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="4">
                      <font>
                         <Font name="Calibri" size="18.0" />
                      </font>
@@ -329,27 +329,27 @@
                   <Font name="Calibri" size="12.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="58.0" layoutY="7.0" text="A">
+            <Label alignment="CENTER" layoutX="58.0" layoutY="7.0" text="a">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="145.0" layoutY="7.0" text="B">
+            <Label alignment="CENTER" layoutX="145.0" layoutY="7.0" text="b">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="234.0" layoutY="7.0" text="C">
+            <Label alignment="CENTER" layoutX="234.0" layoutY="7.0" text="c">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="321.0" layoutY="7.0" text="D">
+            <Label alignment="CENTER" layoutX="321.0" layoutY="7.0" text="d">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="410.0" layoutY="7.0" text="E">
+            <Label alignment="CENTER" layoutX="410.0" layoutY="7.0" text="e">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
@@ -379,27 +379,27 @@
                   <Font name="Calibri" size="12.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="58.0" layoutY="62.0" text="F">
+            <Label alignment="CENTER" layoutX="58.0" layoutY="62.0" text="f">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="145.0" layoutY="62.0" text="G">
+            <Label alignment="CENTER" layoutX="145.0" layoutY="62.0" text="g">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="234.0" layoutY="62.0" text="H">
+            <Label alignment="CENTER" layoutX="234.0" layoutY="62.0" text="h">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="321.0" layoutY="62.0" text="I">
+            <Label alignment="CENTER" layoutX="321.0" layoutY="62.0" text="i">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="410.0" layoutY="62.0" text="J">
+            <Label alignment="CENTER" layoutX="410.0" layoutY="62.0" text="j">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
@@ -429,27 +429,27 @@
                   <Font name="Calibri" size="12.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="58.0" layoutY="117.0" text="K">
+            <Label alignment="CENTER" layoutX="58.0" layoutY="117.0" text="k">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="145.0" layoutY="117.0" text="L">
+            <Label alignment="CENTER" layoutX="145.0" layoutY="117.0" text="l">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="232.0" layoutY="117.0" text="M" textAlignment="CENTER">
+            <Label alignment="CENTER" layoutX="232.0" layoutY="117.0" text="m" textAlignment="CENTER">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="321.0" layoutY="117.0" text="N">
+            <Label alignment="CENTER" layoutX="321.0" layoutY="117.0" text="n">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="410.0" layoutY="117.0" text="O">
+            <Label alignment="CENTER" layoutX="410.0" layoutY="117.0" text="o">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
@@ -479,27 +479,27 @@
                   <Font name="Calibri" size="12.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="58.0" layoutY="172.0" text="P">
+            <Label alignment="CENTER" layoutX="58.0" layoutY="172.0" text="p">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="145.0" layoutY="172.0" text="Q">
+            <Label alignment="CENTER" layoutX="145.0" layoutY="172.0" text="q">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="234.0" layoutY="172.0" text="R">
+            <Label alignment="CENTER" layoutX="234.0" layoutY="172.0" text="r">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="321.0" layoutY="172.0" text="S">
+            <Label alignment="CENTER" layoutX="321.0" layoutY="172.0" text="s">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="410.0" layoutY="172.0" text="T">
+            <Label alignment="CENTER" layoutX="410.0" layoutY="172.0" text="t">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
@@ -529,27 +529,27 @@
                   <Font name="Calibri" size="12.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="58.0" layoutY="227.0" text="U">
+            <Label alignment="CENTER" layoutX="58.0" layoutY="227.0" text="u">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="145.0" layoutY="227.0" text="V">
+            <Label alignment="CENTER" layoutX="145.0" layoutY="227.0" text="v">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="234.0" layoutY="227.0" text="X">
+            <Label alignment="CENTER" layoutX="234.0" layoutY="227.0" text="x">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="321.0" layoutY="227.0" text="Y">
+            <Label alignment="CENTER" layoutX="321.0" layoutY="227.0" text="y">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="406.0" layoutY="227.0" text="W">
+            <Label alignment="CENTER" layoutX="406.0" layoutY="227.0" text="w">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
@@ -559,7 +559,7 @@
                   <Font name="Calibri" size="12.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="58.0" layoutY="282.0" text="Z">
+            <Label alignment="CENTER" layoutX="58.0" layoutY="282.0" text="z">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
